@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===================== SEO ===================== -->
+<title>VOLTIX — Turning Ideas Into Powerful Digital Products</title>
+<meta name="description" content="VOLTIX is a technology studio building data analytics, UI/UX design, cybersecurity, and full-stack software for ambitious companies. Request a service and see your idea take shape.">
+<meta name="keywords" content="VOLTIX, data analytics, UI/UX design, cybersecurity, frontend development, backend development, software studio">
+<meta name="author" content="VOLTIX">
+<link rel="canonical" href="https://voltix.studio/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="VOLTIX — Turning Ideas Into Powerful Digital Products">
+<meta property="og:description" content="A technology studio for data analytics, UI/UX, cybersecurity, and software engineering.">
+<meta property="og:image" content="assets/logo.png">
+<meta property="og:url" content="https://voltix.studio/">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VOLTIX — Turning Ideas Into Powerful Digital Products">
+<meta name="twitter:description" content="A technology studio for data analytics, UI/UX, cybersecurity, and software engineering.">
+<meta name="twitter:image" content="assets/logo.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="assets/logo.png">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Font Awesome (icons only — no emoji anywhere on the site) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Noise overlay -->
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#top" class="navbar__brand" aria-label="VOLTIX home">
+      <img src="assets/logo.png" alt="VOLTIX logo" class="navbar__logo">
+      <span>VOLTIX</span>
+    </a>
+
+    <nav class="navbar__links" id="navLinks" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#team">Team</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="navbar__actions">
+      <button class="btn btn--primary btn--sm" id="openModalNav" aria-haspopup="dialog" aria-controls="requestModal">
+        <span>Request a Service</span>
+      </button>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <canvas id="circuitCanvas" class="hero__canvas" aria-hidden="true"></canvas>
+  <div class="hero__vignette" aria-hidden="true"></div>
+
+  <div class="hero__inner container">
+    <p class="eyebrow reveal" data-reveal>
+      <span class="eyebrow__dot"></span> Signal live · engineering studio
+    </p>
+
+    <h1 class="hero__title" aria-label="Build. Secure. Scale.">
+      <span class="hero__line" data-reveal><span class="hero__word">Build.</span></span>
+      <span class="hero__line" data-reveal style="--d:1"><span class="hero__word hero__word--outline">Secure.</span></span>
+      <span class="hero__line" data-reveal style="--d:2"><span class="hero__word hero__word--gradient">Scale.</span></span>
+    </h1>
+
+    <p class="hero__subtitle reveal" data-reveal style="--d:3">
+      VOLTIX is a technology studio that turns raw ideas into products people trust —
+      analytics that explain themselves, interfaces that feel inevitable, and systems
+      engineered to hold under pressure.
+    </p>
+
+    <div class="hero__actions reveal" data-reveal style="--d:4">
+      <button class="btn btn--primary btn--lg ripple" id="openModalHero">
+        <span>Request a Service</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8H15M15 8L9 2M15 8L9 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="#services" class="btn btn--ghost btn--lg ripple">
+        <span>Our Services</span>
+      </a>
+    </div>
+
+    <div class="hero__signals reveal" data-reveal style="--d:5">
+      <div class="signal"><span class="signal__pulse"></span>Data Analytics</div>
+      <div class="signal"><span class="signal__pulse"></span>UI / UX Design</div>
+      <div class="signal"><span class="signal__pulse"></span>Cybersecurity</div>
+      <div class="signal"><span class="signal__pulse"></span>Frontend</div>
+      <div class="signal"><span class="signal__pulse"></span>Backend</div>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-track"><div class="hero__scroll-thumb"></div></div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="section about" id="about">
+  <div class="container about__grid">
+    <div class="about__label-col reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> About VOLTIX</p>
+      <h2 class="section__title">We engineer the<br><span class="text-gradient">unseen infrastructure</span><br>behind great products.</h2>
+    </div>
+
+    <div class="about__body-col">
+      <p class="about__lead reveal" data-reveal>
+        VOLTIX was built on a simple frustration: too many good ideas die in the gap
+        between a founder's vision and a working product. We close that gap — end to
+        end, from the first data model to the last line of production code.
+      </p>
+      <p class="about__text reveal" data-reveal style="--d:1">
+        Our mission is to turn ideas into powerful digital products. Not prototypes.
+        Not decks. Products that hold real users, real traffic, and real scrutiny —
+        built by people who treat your business like their own.
+      </p>
+
+      <div class="about__reasons">
+        <div class="reason reveal" data-reveal style="--d:2">
+          <div class="reason__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6.5V12C3 16.9 6.8 21.4 12 22.5C17.2 21.4 21 16.9 21 12V6.5L12 2Z" stroke="currentColor" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Security-first thinking</h3>
+          <p>Every system is designed assuming it will be attacked — because eventually, it will be.</p>
+        </div>
+        <div class="reason reveal" data-reveal style="--d:3">
+          <div class="reason__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M8 15v2M12 11v6M16 8v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Decisions backed by data</h3>
+          <p>We instrument before we guess, so your roadmap is built on evidence, not opinion.</p>
+        </div>
+        <div class="reason__icon-row"></div>
+        <div class="reason reveal" data-reveal style="--d:4">
+          <div class="reason__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M8 4v5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Interfaces people trust</h3>
+          <p>Design isn't decoration here — it's the layer that earns a user's confidence.</p>
+        </div>
+        <div class="reason reveal" data-reveal style="--d:5">
+          <div class="reason__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Built to ship fast</h3>
+          <p>Lean process, senior-only teams, no bureaucracy between your idea and launch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trace-divider" aria-hidden="true"><svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path class="trace-path" d="M0 20 H420 L460 4 L500 36 L540 20 H1200"/></svg></div>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> What we build</p>
+      <h2 class="section__title">Five disciplines.<br>One <span class="text-gradient">connected team.</span></h2>
+      <p class="section__sub">Every engagement draws on the same senior bench — no handoffs between agencies, no lost context.</p>
+    </div>
+
+    <div class="services__grid">
+      <article class="service-card reveal" data-reveal>
+        <div class="service-card__glow"></div>
+        <span class="service-card__index">Analytics</span>
+        <div class="service-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Data Analytics &amp; BI</h3>
+        <p>We turn scattered logs and spreadsheets into live dashboards your team actually opens every morning.</p>
+        <ul class="service-card__tags"><li>Pipelines</li><li>Dashboards</li><li>Forecasting</li></ul>
+      </article>
+
+      <article class="service-card reveal" data-reveal style="--d:1">
+        <div class="service-card__glow"></div>
+        <span class="service-card__index">Design</span>
+        <div class="service-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>UI / UX Design</h3>
+        <p>Interfaces mapped to real user behaviour, prototyped in days and stress-tested before a line of code exists.</p>
+        <ul class="service-card__tags"><li>Research</li><li>Prototyping</li><li>Design systems</li></ul>
+      </article>
+
+      <article class="service-card reveal" data-reveal style="--d:2">
+        <div class="service-card__glow"></div>
+        <span class="service-card__index">Security</span>
+        <div class="service-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6.5V12C3 16.9 6.8 21.4 12 22.5C17.2 21.4 21 16.9 21 12V6.5L12 2Z" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Cybersecurity</h3>
+        <p>Threat modelling, penetration testing, and hardened infrastructure so launch day isn't a gamble.</p>
+        <ul class="service-card__tags"><li>Audits</li><li>Pen testing</li><li>Compliance</li></ul>
+      </article>
+
+      <article class="service-card reveal" data-reveal style="--d:3">
+        <div class="service-card__glow"></div>
+        <span class="service-card__index">Frontend</span>
+        <div class="service-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Frontend Development</h3>
+        <p>Pixel-true, animation-rich interfaces that stay fast on a five-year-old phone and a slow connection.</p>
+        <ul class="service-card__tags"><li>Web apps</li><li>Motion</li><li>Performance</li></ul>
+      </article>
+
+      <article class="service-card reveal" data-reveal style="--d:4">
+        <div class="service-card__glow"></div>
+        <span class="service-card__index">Backend</span>
+        <div class="service-card__icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="8" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Backend Development</h3>
+        <p>APIs and architecture designed to survive traffic spikes, schema changes, and three years of growth.</p>
+        <ul class="service-card__tags"><li>APIs</li><li>Databases</li><li>Cloud infra</li></ul>
+      </article>
+
+      <article class="service-card service-card--cta reveal" data-reveal style="--d:5">
+        <h3>Not sure which one you need?</h3>
+        <p>Tell us the problem, not the solution — we'll map the right combination of disciplines.</p>
+        <button class="btn btn--primary ripple" id="openModalServices"><span>Start a project</span></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY CHOOSE US ===================== -->
+<section class="section why" id="why">
+  <div class="container">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> Why VOLTIX</p>
+      <h2 class="section__title">Built for teams who<br><span class="text-gradient">can't afford to guess.</span></h2>
+    </div>
+
+    <div class="why__grid">
+      <div class="why-card reveal" data-reveal>
+        <span class="why-card__num">01</span>
+        <h3>Creative Team</h3>
+        <p>Designers and engineers who argue about pixels and query plans in the same meeting.</p>
+      </div>
+      <div class="why-card reveal" data-reveal style="--d:1">
+        <span class="why-card__num">02</span>
+        <h3>Modern Technologies</h3>
+        <p>We choose tools for longevity and speed, not resumes — no experiments on your production stack.</p>
+      </div>
+      <div class="why-card reveal" data-reveal style="--d:2">
+        <span class="why-card__num">03</span>
+        <h3>Security First</h3>
+        <p>Access control, encryption, and monitoring are part of the architecture, not a patch afterward.</p>
+      </div>
+      <div class="why-card reveal" data-reveal style="--d:3">
+        <span class="why-card__num">04</span>
+        <h3>Fast Delivery</h3>
+        <p>Weekly shippable milestones so you're watching progress, not waiting for a big reveal.</p>
+      </div>
+      <div class="why-card reveal" data-reveal style="--d:4">
+        <span class="why-card__num">05</span>
+        <h3>Scalable Solutions</h3>
+        <p>What we build for 100 users still works cleanly at 100,000 — we design for the curve.</p>
+      </div>
+      <div class="why-card reveal" data-reveal style="--d:5">
+        <span class="why-card__num">06</span>
+        <h3>Professional Support</h3>
+        <p>A real person on call after launch, not a ticket queue that disappears once you've paid.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section class="section process" id="process">
+  <div class="container">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> Our process</p>
+      <h2 class="section__title">One current,<br><span class="text-gradient">six stages.</span></h2>
+      <p class="section__sub">Every project runs the same circuit — nothing skipped, nothing rebuilt twice.</p>
+    </div>
+
+    <div class="circuit-timeline">
+      <svg class="circuit-timeline__line" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+        <path class="circuit-timeline__path" d="M0 60 H80 L110 30 L140 90 L170 60 H330 L360 30 L390 90 L420 60 H580 L610 30 L640 90 L670 60 H830 L860 30 L890 90 L920 60 H1080 L1110 30 L1140 90 L1170 60 H1200"/>
+      </svg>
+      <div class="circuit-timeline__steps">
+        <div class="circuit-step reveal" data-reveal>
+          <span class="circuit-step__node"></span>
+          <h3>Discovery</h3>
+          <p>We map the problem, the users, and the constraints before touching a tool.</p>
+        </div>
+        <div class="circuit-step reveal" data-reveal style="--d:1">
+          <span class="circuit-step__node"></span>
+          <h3>Planning</h3>
+          <p>Scope, architecture, and timeline get locked into a plan you can actually hold us to.</p>
+        </div>
+        <div class="circuit-step reveal" data-reveal style="--d:2">
+          <span class="circuit-step__node"></span>
+          <h3>Design</h3>
+          <p>Flows and interfaces are prototyped and tested before development begins.</p>
+        </div>
+        <div class="circuit-step reveal" data-reveal style="--d:3">
+          <span class="circuit-step__node"></span>
+          <h3>Development</h3>
+          <p>Senior engineers build in weekly increments you can see and use.</p>
+        </div>
+        <div class="circuit-step reveal" data-reveal style="--d:4">
+          <span class="circuit-step__node"></span>
+          <h3>Testing</h3>
+          <p>Security, performance, and usability are verified — not assumed.</p>
+        </div>
+        <div class="circuit-step reveal" data-reveal style="--d:5">
+          <span class="circuit-step__node"></span>
+          <h3>Launch</h3>
+          <p>We ship, monitor, and stay on call for the first heartbeat of real traffic.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS ===================== -->
+<section class="section stats" id="stats">
+  <div class="container stats__grid">
+    <div class="stat reveal" data-reveal>
+      <span class="stat__num" data-count="140" data-suffix="+">0</span>
+      <span class="stat__label">Projects Completed</span>
+    </div>
+    <div class="stat reveal" data-reveal style="--d:1">
+      <span class="stat__num" data-count="62" data-suffix="+">0</span>
+      <span class="stat__label">Clients Served</span>
+    </div>
+    <div class="stat reveal" data-reveal style="--d:2">
+      <span class="stat__num" data-count="24" data-suffix="">0</span>
+      <span class="stat__label">Engineers &amp; Designers</span>
+    </div>
+    <div class="stat reveal" data-reveal style="--d:3">
+      <span class="stat__num" data-count="18" data-suffix="">0</span>
+      <span class="stat__label">Countries Reached</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section class="section team" id="team">
+  <div class="container">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span>Our Team</p>
+      <h2 class="section__title">The team behind<br><span class="text-gradient">every launch.</span></h2>
+    </div>
+
+    <div class="team__grid">
+      <div class="team-card reveal" data-reveal>
+        <div class="team-card__photo" aria-hidden="true"><img src="assets/Members/Omar-Taher.jpeg" alt="Omar Taher"></div>
+        <h3 class="team-card__name">Omar Taher</h3>
+        <p class="team-card__role">Full Stack Developer</p>
+        <p class="team-card__desc">CEO & Founder of VOLTIX, focused on Full-Stack Development and building scalable digital solutions with a passion for innovation, performance, and user experience.</p>
+        <div class="team-card__socials">
+<a href="https://www.linkedin.com/in/omar-taher-dev1" class="team-card__social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+<a href="https://github.com/OTS12-coder" class="team-card__social" aria-label="GitHub" target="blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-github" aria-hidden="true"></i></a>
+<a href="https://www.instagram.com/omar_taher____/" class="team-card__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>         
+<a href="https://wa.me/201229131503" class="team-card__social" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+        </div>
+      </div>
+      <div class="team-card reveal" data-reveal style="--d:1">
+        <div class="team-card__photo" aria-hidden="true"><img src="assets/Members/Omar AbdElpaq.png" alt="Omar AbdElpaq"></div>
+        <h3 class="team-card__name">Omar Abdepaq</h3>
+        <p class="team-card__role">Data Analyst</p>
+        <p class="team-card__desc">Data Analyst & Co-Founder at VOLTIX, specializing in Power BI, Python, SQL, and data-driven solutions that help businesses make smarter decisions.</p>
+        <div class="team-card__socials">
+          <a href="https://www.linkedin.com/in/omarabdelpaq/" class="team-card__social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+</a>
+
+<a href="https://github.com/omarabdelpaq84-design" class="team-card__social" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-github" aria-hidden="true"></i>
+</a>
+
+<a href="https://www.instagram.com/omarabdelpaq/" class="team-card__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>
+
+<a href="https://wa.me/201018625471" class="team-card__social" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+        </div>
+      </div>
+      <div class="team-card reveal" data-reveal style="--d:2">
+        <div class="team-card__photo" aria-hidden="true"><img src="assets/Members/Mohamed-Saaed.jpeg" alt=""></div>
+        <h3 class="team-card__name">Mohamed Saaed</h3>
+        <p class="team-card__role">Cyber Security Engineer</p>
+        <p class="team-card__desc">Aspiring Cybersecurity Analyst with practical experience in SOC, Splunk, Networking, and Linux, eager to grow and protect digital systems.</p>
+        <div class="team-card__socials">
+          <a href="https://www.linkedin.com/in/mohammed-saeed-4a9162364/" class="team-card__social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+</a>
+
+<a href="https://www.instagram.com/mohammed_saeed.90/" class="team-card__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>
+
+<a href="https://wa.me/201094715604" class="team-card__social" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+        </div>
+      </div>
+      <div class="team-card reveal" data-reveal style="--d:3">
+        <div class="team-card__photo" aria-hidden="true"><img src="assets/Members/Mohamed-Ahmed.jpeg" alt=""></div>
+        <h3 class="team-card__name">Mohamed Ahmed</h3>
+        <p class="team-card__role">.NET Developer</p>
+        <p class="team-card__desc">Backend & .NET Developer focused on building scalable applications using C#, .NET, REST APIs, and MySQL, with a passion for clean architecture, problem-solving, and continuous learning.</p>
+        <div class="team-card__socials">
+          <a href="https://www.linkedin.com/in/mohamed-ahmed-73a390322/" class="team-card__social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+</a>
+
+<a href="#" class="team-card__social" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-github" aria-hidden="true"></i>
+</a>
+
+<a href="http://instagram.com/mohamed_newashyy/" class="team-card__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>
+
+<a href="https://wa.me/201116515569" class="team-card__social" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+        </div>
+      </div>
+      <div class="team-card reveal" data-reveal style="--d:3">
+        <div class="team-card__photo" aria-hidden="true"><img src="assets/Members/AMR.jpeg" alt=""></div>
+        <h3 class="team-card__name">Amr Ahmed</h3>
+        <p class="team-card__role">UI/UX Designer</p>
+        <p class="team-card__desc">UI/UX Designer focused on creating intuitive and user-friendly digital experiences, combining creativity, usability, and problem-solving to build effective designs.</p>
+        <div class="team-card__socials">
+          <a href="https://www.linkedin.com/in/amr-ahmed-attia-71226232a/" class="team-card__social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+</a>
+
+<a href="#" class="team-card__social" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-github" aria-hidden="true"></i>
+</a>
+
+<a href="https://www.instagram.com/3mr_ahmed_atia/" class="team-card__social" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>
+
+<a href="https://wa.me/201126692951" class="team-card__social" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> Testimonials</p>
+      <h2 class="section__title">Trusted by teams<br><span class="text-gradient">who ship often.</span></h2>
+    </div>
+
+    <div class="slider reveal" data-reveal>
+      <div class="slider__track" id="sliderTrack">
+        <blockquote class="slider__slide">
+          <p>“VOLTIX rebuilt our reporting pipeline in six weeks. We finally trust the numbers on our own dashboard.”</p>
+          <footer><strong>Youssef El-Sayed</strong><span>Head of Product, Nilebase</span></footer>
+        </blockquote>
+        <blockquote class="slider__slide">
+          <p>“The security audit found things two previous vendors missed. Worth every conversation it took to get there.”</p>
+          <footer><strong>Mariam Fathy</strong><span>CTO, Kite Logistics</span></footer>
+        </blockquote>
+        <blockquote class="slider__slide">
+          <p>“They redesigned our onboarding flow and our activation rate moved in the first week after launch.”</p>
+          <footer><strong>Omar Zaki</strong><span>Founder, Sahel Retail</span></footer>
+        </blockquote>
+      </div>
+      <div class="slider__controls">
+        <button class="slider__arrow" id="sliderPrev" aria-label="Previous testimonial"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+        <div class="slider__dots" id="sliderDots"></div>
+        <button class="slider__arrow" id="sliderNext" aria-label="Next testimonial"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section faq" id="faq">
+  <div class="container faq__grid">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> FAQ</p>
+      <h2 class="section__title">Questions we<br><span class="text-gradient">hear most.</span></h2>
+    </div>
+
+    <div class="accordion reveal" data-reveal>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>How long does a typical project take?</span>
+          <span class="accordion__icon"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+        </button>
+        <div class="accordion__panel"><p>Most engagements run 4–12 weeks depending on scope. You'll get a firm timeline during Planning, before any development starts.</p></div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>Can VOLTIX handle multiple services at once?</span>
+          <span class="accordion__icon"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+        </button>
+        <div class="accordion__panel"><p>Yes — most clients combine at least two disciplines. Our team works from one shared plan instead of separate agency handoffs.</p></div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>Do you work with early-stage startups?</span>
+          <span class="accordion__icon"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+        </button>
+        <div class="accordion__panel"><p>We do. We scope engagements to match your stage, from a single audit to a full product build.</p></div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>What happens after launch?</span>
+          <span class="accordion__icon"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+        </button>
+        <div class="accordion__panel"><p>We stay on for monitoring and support based on the plan agreed during onboarding — nothing disappears at launch.</p></div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__trigger" aria-expanded="false">
+          <span>How do we start?</span>
+          <span class="accordion__icon"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i></span>
+        </button>
+        <div class="accordion__panel"><p>Open the request form, tell us about the project, and we'll follow up to schedule a discovery call.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section contact" id="contact">
+  <div class="container contact__grid">
+    <div class="reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> Contact</p>
+      <h2 class="section__title">Let's put your<br><span class="text-gradient">idea on the circuit.</span></h2>
+      <p class="section__sub">Reach out directly, or open the request form for a structured project brief.</p>
+      <button class="btn btn--primary btn--lg ripple" id="openModalContact"><span>Request a Service</span></button>
+
+      <div class="contact__quick">
+        <a class="contact__quick-row" id="quickEmail" href="#"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span></span></a>
+        <a class="contact__quick-row" id="quickPhone" href="#"><i class="fa-solid fa-phone" aria-hidden="true"></i><span></span></a>
+        <a class="contact__quick-row" id="quickWhatsapp" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span></span></a>
+        <div class="contact__quick-row contact__quick-row--static"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span id="quickAddress"></span></div>
+      </div>
+
+      <div class="contact__map reveal" data-reveal style="--d:1">
+        <iframe
+          title="VOLTIX headquarters map — Sadat City, Menofia, Egypt"
+          src="https://www.google.com/maps?q=Sadat%20City%2C%20Monufia%2C%20Egypt&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <form class="contact__form reveal" data-reveal style="--d:2" id="contactForm" novalidate>
+      <p class="contact__form-title">Send us a message</p>
+      <div class="field">
+        <label for="ctName">Full Name <span class="req">*</span></label>
+        <input type="text" id="ctName" name="ctName" required autocomplete="name">
+        <span class="field__error">Please enter your name.</span>
+      </div>
+      <div class="field">
+        <label for="ctEmail">Email <span class="req">*</span></label>
+        <input type="email" id="ctEmail" name="ctEmail" required autocomplete="email">
+        <span class="field__error">Enter a valid email address.</span>
+      </div>
+      <div class="field">
+        <label for="ctSubject">Subject <span class="req">*</span></label>
+        <input type="text" id="ctSubject" name="ctSubject" required>
+        <span class="field__error">Please add a subject.</span>
+      </div>
+      <div class="field">
+        <label for="ctMessage">Message <span class="req">*</span></label>
+        <textarea id="ctMessage" name="ctMessage" rows="4" required placeholder="How can we help?"></textarea>
+        <span class="field__error">Please write a short message.</span>
+      </div>
+      <button type="submit" class="btn btn--primary ripple contact__form-submit"><span>Send Message</span></button>
+      <p class="contact__form-msg" id="contactFormMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href="#top" class="navbar__brand">
+        <img src="assets/logo.png" alt="VOLTIX logo" class="navbar__logo">
+        <span>VOLTIX</span>
+      </a>
+      <p>Turning ideas into powerful digital products.</p>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/company/voltix-eg/" aria-label="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        <a href="#" id="footerX" aria-label="X (Twitter)" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+        <a href="#" id="footerInstagram" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+    <div class="footer__col">
+      <h4>Services</h4>
+      <a href="#services">Data Analytics</a>
+      <a href="#services">UI/UX Design</a>
+      <a href="#services">Cybersecurity</a>
+      <a href="#services">Frontend Development</a>
+      <a href="#services">Backend Development</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#team">Team</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <div class="footer__col">
+      <h4>Resources</h4>
+      <a href="privacy.html" id="privacyLink">Privacy Policy</a>
+      <a href="terms.html" id="termsLink">Terms of Service</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer__col footer__newsletter">
+      <h4>Stay in the loop</h4>
+      <p>Occasional notes on what we're building. No spam.</p>
+      <form class="newsletter" id="newsletterForm">
+        <input type="email" placeholder="you@company.com" required aria-label="Email address">
+        <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      </form>
+      <p class="newsletter__msg" id="newsletterMsg" role="status"></p>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <span>© <span id="year"></span> VOLTIX. All rights reserved.</span>
+      <div class="footer__legal">
+        <a href="privacy.html" id="privacyLink2">Privacy Policy</a>
+        <a href="terms.html" id="termsLink2">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- ===================== REQUEST SERVICE MODAL ===================== -->
+<div class="modal" id="requestModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal__backdrop" id="modalBackdrop"></div>
+  <div class="modal__panel">
+    <button class="modal__close" id="closeModal" aria-label="Close form"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+
+    <div class="modal__scroll">
+      <p class="eyebrow"><span class="eyebrow__dot"></span> New request</p>
+      <h2 id="modalTitle" class="modal__title">Tell us about your project</h2>
+      <p class="modal__sub">Fill in as much as you can — we'll follow up within one business day.</p>
+
+      <form id="requestForm" novalidate>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="fullName">Full Name <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" required autocomplete="name">
+            <span class="field__error">Please enter your full name.</span>
+          </div>
+          <div class="field">
+            <label for="companyName">Company Name</label>
+            <input type="text" id="companyName" name="companyName" autocomplete="organization">
+          </div>
+        </div>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+            <span class="field__error">Enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="country">Country <span class="req">*</span></label>
+            <input type="text" id="country" name="country" required autocomplete="country-name">
+            <span class="field__error">Please enter your country.</span>
+          </div>
+          <div class="field">
+            <label for="projectType">Project Type <span class="req">*</span></label>
+            <select id="projectType" name="projectType" required>
+              <option value="" disabled selected>Select a type</option>
+              <option>New Product</option>
+              <option>Redesign</option>
+              <option>Internal Tool</option>
+              <option>Audit / Consulting</option>
+              <option>Other</option>
+            </select>
+            <span class="field__error">Please choose a project type.</span>
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend>Service Needed <span class="req">*</span></legend>
+          <div class="chip-group" id="serviceChips">
+            <label class="chip"><input type="checkbox" name="service" value="Data Analytics"><span>Data Analytics</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="UI/UX"><span>UI/UX</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Cybersecurity"><span>Cybersecurity</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Frontend"><span>Frontend</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Backend"><span>Backend</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Full Project"><span>Full Project</span></label>
+            <label class="chip"><input type="checkbox" name="service" value="Multiple Services"><span>Multiple Services</span></label>
+          </div>
+          <span class="field__error" id="serviceError">Select at least one service.</span>
+        </fieldset>
+
+        <div class="field">
+          <label for="description">Project Description <span class="req">*</span></label>
+          <textarea id="description" name="description" rows="4" required placeholder="What are you building, and what problem does it solve?"></textarea>
+          <span class="field__error">Tell us a little about the project.</span>
+        </div>
+
+        <div class="form__row form__row--2">
+          <div class="field">
+            <label for="budget">Budget <span class="req">*</span></label>
+            <select id="budget" name="budget" required>
+              <option value="" disabled selected>Select a range</option>
+              <option>&lt; $1,000</option>
+              <option>$1,000 – $3,000</option>
+              <option>$3,000 – $5,000</option>
+              <option>$5,000+</option>
+            </select>
+            <span class="field__error">Please choose a budget range.</span>
+          </div>
+          <div class="field">
+            <label for="deadline">Deadline</label>
+            <input type="date" id="deadline" name="deadline">
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend>Preferred Contact Method</legend>
+          <div class="radio-group">
+            <label class="radio"><input type="radio" name="contactMethod" value="Email" checked><span>Email</span></label>
+            <label class="radio"><input type="radio" name="contactMethod" value="Phone"><span>Phone</span></label>
+            <label class="radio"><input type="radio" name="contactMethod" value="WhatsApp"><span>WhatsApp</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="files">Upload Files <span class="optional">(optional)</span></label>
+          <div class="file-drop" id="fileDrop">
+            <input type="file" id="files" name="files" multiple>
+            <span id="fileDropText">Drag files here or click to browse</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Extra Notes</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Anything else we should know?"></textarea>
+        </div>
+
+        <div class="modal__actions">
+          <button type="button" class="btn btn--ghost" id="cancelForm"><span>Cancel</span></button>
+          <button type="submit" class="btn btn--primary ripple"><span>Submit Request</span></button>
+        </div>
+      </form>
+
+      <div class="modal__success" id="modalSuccess" hidden>
+        <div class="modal__success-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Request received</h3>
+        <p>Thanks — a member of the VOLTIX team will reach out within one business day.</p>
+        <button class="btn btn--primary" id="closeSuccess"><span>Done</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
