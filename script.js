@@ -8,14 +8,44 @@
    (quick-contact links, footer socials, contact form) updates automatically.
    ========================================================================== */
 const COMPANY_INFO = {
-  email: 'contact@voltix-eg.com',       // TODO: replace with your real company email
-  phone: '+20 100 123 4567',            // TODO: replace with your real phone number
-  whatsapp: '201001234567',             // TODO: digits only, country code, no + or spaces
+  email: 'voltixeg6@gmail.com',       
+  phone: '+20 1035151545',            
+  whatsapp: '201035151545',             
   address: 'Sadat City, Menofia, Egypt',
   linkedin: 'https://www.linkedin.com/company/voltix-eg/',
-  x: '',                                 // TODO: e.g. 'https://x.com/voltix_eg'
-  instagram: ''                          // TODO: e.g. 'https://instagram.com/voltix_eg'
+  tiktok: 'https://www.tiktok.com/@voltix.egg?_r=1&_t=ZS-98Pjr6WTSZ5',                            
+  instagram: 'https://www.instagram.com/volti_xeg/'           
 };
+
+/* ==========================================================================
+   EMAIL DELIVERY — sends the "Request a Service" form AND the contact form
+   straight to COMPANY_INFO.email as a real Gmail email, automatically, with
+   no third-party keys anywhere in this file or in the browser.
+
+   How it works:
+   - The form data is POSTed to /api/send-email (a tiny serverless function,
+     see api/send-email.js).
+   - That function logs in to Gmail with COMPANY_INFO.email using an "App
+     Password" and sends the email through Gmail's real SMTP servers.
+   - The App Password is stored ONLY as an environment variable on the
+     hosting provider (e.g. Vercel), never in this file and never sent to
+     the visitor's browser. See api/send-email.js for the one-time setup.
+   ========================================================================== */
+const SEND_EMAIL_ENDPOINT = '/api/send-email';
+
+async function sendEmail(kind, data) {
+  const res = await fetch(SEND_EMAIL_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ kind, data })
+  });
+  if (!res.ok) {
+    let msg = 'Failed to send email';
+    try { msg = (await res.json()).error || msg; } catch (_) {}
+    throw new Error(msg);
+  }
+  return res.json();
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -44,10 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const footerLinkedin = document.querySelector('.footer__social a[href*="linkedin.com"]');
   if (footerLinkedin) footerLinkedin.href = COMPANY_INFO.linkedin;
 
-  const footerX = document.getElementById('footerX');
-  if (footerX) {
-    if (COMPANY_INFO.x) { footerX.href = COMPANY_INFO.x; }
-    else { footerX.removeAttribute('target'); footerX.setAttribute('aria-disabled', 'true'); footerX.style.opacity = '0.4'; footerX.style.pointerEvents = 'none'; }
+  const footerTiktok = document.getElementById('footerTiktok');
+  if (footerTiktok) {
+    if (COMPANY_INFO.tiktok) { footerTiktok.href = COMPANY_INFO.tiktok; }
+    else { footerTiktok.removeAttribute('target'); footerTiktok.setAttribute('aria-disabled', 'true'); footerTiktok.style.opacity = '0.4'; footerTiktok.style.pointerEvents = 'none'; }
   }
   const footerInstagram = document.getElementById('footerInstagram');
   if (footerInstagram) {
@@ -381,7 +411,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  form.addEventListener('submit', (e) => {
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const submitBtnLabel = submitBtn ? submitBtn.querySelector('span') : null;
+  const modalErrorMsg = document.getElementById('modalErrorMsg');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let valid = true;
 
@@ -399,8 +433,43 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    form.hidden = true;
-    modalSuccess.hidden = false;
+    const fd = new FormData(form);
+    const servicesList = fd.getAll('service').join(', ');
+    const data = {
+      fullName: fd.get('fullName'),
+      companyName: fd.get('companyName'),
+      email: fd.get('email'),
+      phone: fd.get('phone'),
+      country: fd.get('country'),
+      projectType: fd.get('projectType'),
+      services_list: servicesList,
+      description: fd.get('description'),
+      budget: fd.get('budget'),
+      deadline: fd.get('deadline') || 'Not specified',
+      contactMethod: fd.get('contactMethod'),
+      notes: fd.get('notes'),
+      fileNames: fileInput.files ? Array.from(fileInput.files).map(f => f.name) : [],
+      submitted_at: new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
+    };
+
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitBtnLabel) submitBtnLabel.textContent = 'Sending…';
+    if (modalErrorMsg) modalErrorMsg.textContent = '';
+
+    try {
+      await sendEmail('request', data);
+
+      form.hidden = true;
+      modalSuccess.hidden = false;
+    } catch (err) {
+      console.error('VOLTIX request submission failed:', err);
+      if (modalErrorMsg) {
+        modalErrorMsg.textContent = "Something went wrong sending your request. Please try again, or email us directly at " + COMPANY_INFO.email + ".";
+      }
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitBtnLabel) submitBtnLabel.textContent = 'Submit Request';
+    }
   });
 
   closeSuccessBtn.addEventListener('click', () => {
@@ -458,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactFormMsg = document.getElementById('contactFormMsg');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = document.getElementById('ctName');
@@ -477,15 +546,28 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       if (!valid) return;
 
-      const mailBody =
-        `Name: ${name.value.trim()}\nEmail: ${email.value.trim()}\n\n${message.value.trim()}`;
-      const mailtoUrl =
-        `mailto:${COMPANY_INFO.email}?subject=${encodeURIComponent(subject.value.trim())}&body=${encodeURIComponent(mailBody)}`;
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      contactFormMsg.textContent = 'Sending…';
 
-      window.location.href = mailtoUrl;
+      const data = {
+        name: name.value.trim(),
+        email: email.value.trim(),
+        subject: subject.value.trim(),
+        message: message.value.trim(),
+        submitted_at: new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
+      };
 
-      contactFormMsg.textContent = 'Opening your email app to send this to us…';
-      contactForm.reset();
+      try {
+        await sendEmail('contact', data);
+        contactFormMsg.textContent = 'Thanks — your message has been sent.';
+        contactForm.reset();
+      } catch (err) {
+        console.error('VOLTIX contact submission failed:', err);
+        contactFormMsg.textContent = "Something went wrong sending your message. Please try again, or email us directly at " + COMPANY_INFO.email + ".";
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 
