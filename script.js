@@ -10,7 +10,7 @@
 const COMPANY_INFO = {
   email: 'voltixeg6@gmail.com',       
   phone: '+20 1035151545',            
-  whatsapp: '201035151545',             
+  whatsapp: '201035151545',
   address: 'Sadat City, Menofia, Egypt',
   linkedin: 'https://www.linkedin.com/company/voltix-eg/',
   tiktok: 'https://www.tiktok.com/@voltix.egg?_r=1&_t=ZS-98Pjr6WTSZ5',                            
@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const quickEmail = document.getElementById('quickEmail');
   const quickPhone = document.getElementById('quickPhone');
   const quickWhatsapp = document.getElementById('quickWhatsapp');
+  const quickInstagram = document.getElementById('quickInstagram');
+  const quickTiktok = document.getElementById('quickTiktok');
+  const quickLinkedin = document.getElementById('quickLinkedin');
   const quickAddress = document.getElementById('quickAddress');
 
   if (quickEmail) {
@@ -69,6 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     quickWhatsapp.href = `https://wa.me/${COMPANY_INFO.whatsapp}`;
     quickWhatsapp.querySelector('span').textContent = 'Chat on WhatsApp';
   }
+  if (quickInstagram) quickInstagram.href = COMPANY_INFO.instagram;
+  if (quickTiktok) quickTiktok.href = COMPANY_INFO.tiktok;
+  if (quickLinkedin) quickLinkedin.href = COMPANY_INFO.linkedin;
   if (quickAddress) quickAddress.textContent = COMPANY_INFO.address;
 
   const footerLinkedin = document.querySelector('.footer__social a[href*="linkedin.com"]');

@@ -100,6 +100,7 @@ const EMAIL_BG = '#36505C';
 const EMAIL_CARD = '#f4f7f8';
 const EMAIL_ACCENT_TEAL = '#2fe6c0';
 const EMAIL_ACCENT_BLUE = '#38bdf8';
+const EMAIL_FONT = "'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif";
 
 function escapeHtml(str) {
   return String(str ?? '')
@@ -109,13 +110,13 @@ function escapeHtml(str) {
 function emailRow(label, value) {
   return `
     <tr>
-      <td style="padding:10px 14px;border-bottom:1px solid #e2e8ea;color:#6b7a80;font-size:13px;width:38%;vertical-align:top;">${escapeHtml(label)}</td>
-      <td style="padding:10px 14px;border-bottom:1px solid #e2e8ea;color:#1c2b30;font-size:14px;vertical-align:top;">${value && String(value).trim() ? escapeHtml(value) : '—'}</td>
+      <td style="font-family:${EMAIL_FONT};padding:11px 14px;border-bottom:1px solid #e2e8ea;color:#6b7a80;font-size:13px;font-weight:500;width:38%;vertical-align:top;">${escapeHtml(label)}</td>
+      <td style="font-family:${EMAIL_FONT};padding:11px 14px;border-bottom:1px solid #e2e8ea;color:#1c2b30;font-size:14px;line-height:1.55;vertical-align:top;">${value && String(value).trim() ? escapeHtml(value) : '—'}</td>
     </tr>`;
 }
 
 function sectionTitle(text) {
-  return `<h3 style="margin:18px 0 4px;color:#0e7aa3;font-size:14px;border-bottom:2px solid #dfe7e9;padding-bottom:6px;">${escapeHtml(text)}</h3>`;
+  return `<h3 style="font-family:${EMAIL_FONT};margin:20px 0 6px;color:#0e7aa3;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;border-bottom:2px solid #dfe7e9;padding-bottom:8px;">${escapeHtml(text)}</h3>`;
 }
 
 function emailShell({ heading, submittedAt, bodyHtml }) {
@@ -123,16 +124,16 @@ function emailShell({ heading, submittedAt, bodyHtml }) {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${EMAIL_BG};padding:32px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:${EMAIL_CARD};border-radius:14px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:${EMAIL_CARD};border-radius:14px;overflow:hidden;font-family:${EMAIL_FONT};">
           <tr>
-            <td style="background:${EMAIL_BG};padding:26px 28px;border-bottom:3px solid ${EMAIL_ACCENT_TEAL};">
-              <span style="font-size:22px;font-weight:bold;letter-spacing:1px;color:#ffffff;">VOLT<span style="color:${EMAIL_ACCENT_TEAL};">I</span><span style="color:${EMAIL_ACCENT_BLUE};">X</span></span>
-              <div style="color:#cfe3e8;font-size:14px;margin-top:6px;">${escapeHtml(heading)}</div>
+            <td style="background:${EMAIL_BG};padding:28px;border-bottom:3px solid ${EMAIL_ACCENT_TEAL};">
+              <span style="font-family:${EMAIL_FONT};font-size:23px;font-weight:700;letter-spacing:1.5px;color:#ffffff;">VOLT<span style="color:${EMAIL_ACCENT_TEAL};">I</span><span style="color:${EMAIL_ACCENT_BLUE};">X</span></span>
+              <div style="font-family:${EMAIL_FONT};color:#cfe3e8;font-size:14px;font-weight:400;margin-top:8px;">${escapeHtml(heading)}</div>
             </td>
           </tr>
           <tr>
             <td style="padding:20px 28px 4px;">
-              <p style="margin:0;color:#8a979b;font-size:12px;">Submitted: ${escapeHtml(submittedAt)}</p>
+              <p style="font-family:${EMAIL_FONT};margin:0;color:#8a979b;font-size:12px;">Submitted: ${escapeHtml(submittedAt)}</p>
             </td>
           </tr>
           <tr>
@@ -141,7 +142,7 @@ function emailShell({ heading, submittedAt, bodyHtml }) {
             </td>
           </tr>
           <tr>
-            <td style="background:#e9eef0;padding:16px 28px;text-align:center;color:#7a8890;font-size:12px;">
+            <td style="font-family:${EMAIL_FONT};background:#e9eef0;padding:18px 28px;text-align:center;color:#7a8890;font-size:12px;">
               VOLTIX · Sadat City, Menofia, Egypt · ${escapeHtml(COMPANY_EMAIL)}
             </td>
           </tr>
@@ -172,13 +173,13 @@ function buildRequestEmailHtml(data) {
     </table>
 
     ${sectionTitle('Description')}
-    <p style="margin:0 0 14px;color:#1c2b30;font-size:14px;line-height:1.6;">${escapeHtml(data.description).replace(/\n/g, '<br>')}</p>
+    <p style="font-family:${EMAIL_FONT};margin:0 0 14px;color:#1c2b30;font-size:14px;line-height:1.65;">${escapeHtml(data.description).replace(/\n/g, '<br>')}</p>
 
     ${sectionTitle('Extra Notes')}
-    <p style="margin:0 0 14px;color:#1c2b30;font-size:14px;line-height:1.6;">${data.notes && data.notes.trim() ? escapeHtml(data.notes).replace(/\n/g, '<br>') : '—'}</p>
+    <p style="font-family:${EMAIL_FONT};margin:0 0 14px;color:#1c2b30;font-size:14px;line-height:1.65;">${data.notes && data.notes.trim() ? escapeHtml(data.notes).replace(/\n/g, '<br>') : '—'}</p>
 
     ${sectionTitle('Attached Files (from form)')}
-    <p style="margin:0;color:#1c2b30;font-size:14px;">${data.fileNames && data.fileNames.length ? escapeHtml(data.fileNames.join(', ')) : 'No files uploaded.'}</p>
+    <p style="font-family:${EMAIL_FONT};margin:0;color:#1c2b30;font-size:14px;">${data.fileNames && data.fileNames.length ? escapeHtml(data.fileNames.join(', ')) : 'No files uploaded.'}</p>
   `;
 
   return emailShell({
@@ -198,7 +199,7 @@ function buildContactEmailHtml(data) {
     </table>
 
     ${sectionTitle('Message')}
-    <p style="margin:0;color:#1c2b30;font-size:14px;line-height:1.6;">${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
+    <p style="font-family:${EMAIL_FONT};margin:0;color:#1c2b30;font-size:14px;line-height:1.65;">${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
   `;
 
   return emailShell({
