@@ -264,7 +264,7 @@
         <div class="service-card__icon">
           <svg width="26" 26" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6.5V12C3 16.9 6.8 21.4 12 22.5C17.2 21.4 21 16.9 21 12V6.5L12 2Z" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
-        <a href="Services/cybersecurity/cybersecurity.html" style="color:inherit;text-decoration:none;">
+        <a href="Services/CyberSecurity/cybersecurity.html" style="color:inherit;text-decoration:none;">
           <h3>Cybersecurity</h3>
           <p>Threat modelling, penetration testing, and hardened infrastructure so launch day isn't a gamble.</p>
         </a>
@@ -835,7 +835,7 @@
       <h4>Services</h4>
       <a href="services/data-analytics/data-analysis.html">Data Analytics</a>
         <a href="Services/UI-UX/ui-ux.html">UI/UX Design</a>
-      <a href="Services/cybersecurity/cybersecurity.html">Cybersecurity</a>
+      <a href="Services/CyberSecurity/cybersecurity.html">Cybersecurity</a>
       <a href="Services/Front%20End/frontend.html">Frontend Development</a>
       <a href="Services/Backend/dot-net.html">Backend .NET</a>
     </div>
@@ -881,6 +881,20 @@
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
+
+<!-- ===================== THANK YOU POPUP ===================== -->
+<div class="thankyou-popup" id="thankyouPopup" role="dialog" aria-modal="true" aria-labelledby="thankyouTitle" aria-hidden="true">
+  <div class="thankyou-popup__backdrop"></div>
+  <div class="thankyou-popup__panel">
+    <button class="thankyou-popup__close" id="thankyouClose" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <div class="thankyou-popup__icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 id="thankyouTitle">Request received</h2>
+    <p>Thanks — a member of the VOLTIX team will reach out within one business day.</p>
+    <button class="btn btn--primary" id="thankyouDone"><span>Done</span></button>
+  </div>
+</div>
 
 <!-- ===================== REQUEST SERVICE MODAL ===================== -->
 <div class="modal" id="requestModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
@@ -1023,7 +1037,7 @@
 
   <script src="shared-state.js"></script>
   <script src="Services/Front End/frontend-data.js"></script>
-  <script src="Services/data-analytics/data-analytics-data.js"></script>
+  <script src="Services/data-analytics/data-analysis-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

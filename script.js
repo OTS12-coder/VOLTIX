@@ -498,8 +498,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       await sendEmail('request', data);
 
-      form.hidden = true;
-      modalSuccess.hidden = false;
+      closeModal();
+      openThankYouPopup();
     } catch (err) {
       console.error('VOLTIX request submission failed:', err);
       if (modalErrorMsg) {
@@ -879,6 +879,31 @@ document.addEventListener('DOMContentLoaded', () => {
     onGlobalStateChange('cart', updateHomepageNavCounts);
     onGlobalStateChange('favorites', updateHomepageNavCounts);
     updateHomepageNavCounts();
+
+    /* thank-you popup */
+    const thankyouPopup = document.getElementById('thankyouPopup');
+    const thankyouClose = document.getElementById('thankyouClose');
+    const thankyouDone = document.getElementById('thankyouDone');
+    const thankyouBackdrop = thankyouPopup?.querySelector('.thankyou-popup__backdrop');
+
+    function openThankYouPopup() {
+      thankyouPopup?.classList.add('is-open');
+      thankyouPopup?.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeThankYouPopup() {
+      thankyouPopup?.classList.remove('is-open');
+      thankyouPopup?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    thankyouClose?.addEventListener('click', closeThankYouPopup);
+    thankyouDone?.addEventListener('click', closeThankYouPopup);
+    thankyouBackdrop?.addEventListener('click', closeThankYouPopup);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && thankyouPopup?.classList.contains('is-open')) closeThankYouPopup();
+    });
   }
 
 });

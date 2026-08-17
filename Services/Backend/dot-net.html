@@ -458,10 +458,24 @@
           <button class="btn btn--primary" id="closeSuccess" type="button"><span>Done</span></button>
         </div>
       </div>
-    </div>
   </div>
+</div>
 
-  <!-- Scripts -->
+<!-- ===================== THANK YOU POPUP ===================== -->
+<div class="thankyou-popup" id="thankyouPopup" role="dialog" aria-modal="true" aria-labelledby="thankyouTitle" aria-hidden="true">
+  <div class="thankyou-popup__backdrop"></div>
+  <div class="thankyou-popup__panel">
+    <button class="thankyou-popup__close" id="thankyouClose" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <div class="thankyou-popup__icon">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 id="thankyouTitle">Request received</h2>
+    <p>Thanks — a member of the VOLTIX team will reach out within one business day.</p>
+    <button class="btn btn--primary" id="thankyouDone"><span>Done</span></button>
+  </div>
+</div>
+
+<!-- Scripts -->
   <script src="../../script.js"></script>
   <script src="../../shared-state.js"></script>
   <script src="dot-net-data.js"></script>

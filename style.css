@@ -1014,6 +1014,46 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
 .modal__success h3 { font-size: 1.4rem; margin-bottom: 10px; }
 .modal__success p { color: var(--text-muted); margin-bottom: 28px; }
 
+.thankyou-popup {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+.thankyou-popup.is-open { opacity: 1; pointer-events: auto; }
+.thankyou-popup__backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+.thankyou-popup__panel {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass-strong);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px 36px;
+  max-width: 420px; width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-glow), var(--shadow-soft);
+  transform: translateY(18px) scale(0.97);
+  transition: transform 0.4s var(--ease);
+}
+.thankyou-popup.is-open .thankyou-popup__panel { transform: translateY(0) scale(1); }
+.thankyou-popup__close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; color: var(--text-muted);
+  font-size: 1.1rem; cursor: pointer;
+}
+.thankyou-popup__icon { color: var(--accent-cyan); margin-bottom: 20px; }
+.thankyou-popup__icon svg { animation: popIn 0.5s var(--ease) 0.1s both; }
+.thankyou-popup h2 { font-size: 1.6rem; margin-bottom: 12px; }
+.thankyou-popup p { color: var(--text-muted); margin-bottom: 28px; line-height: 1.6; }
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 /* ==========================================================================
    Responsive
    ========================================================================== */
@@ -1062,7 +1102,24 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   .footer__grid { grid-template-columns: 1fr; }
   .form__row--2 { grid-template-columns: 1fr; }
   .modal__scroll { padding: 40px 24px 28px; }
+  .modal__panel { width: min(640px, 94vw); }
+  .checkout-modal__panel { width: min(640px, 94vw); }
   .hero__title { font-size: clamp(2.6rem, 13vw, 4rem); }
+  .cybersecurity-hero__decor,
+  .data-analytics-hero__decor,
+  .frontend-hero__decor,
+  .ui-ux-hero__decor,
+  .dotnet-hero__decor {
+    width: 320px;
+    height: 320px;
+  }
+  .cybersecurity-cta__inner,
+  .data-analytics-cta__inner,
+  .frontend-cta__inner,
+  .ui-ux-cta__inner,
+  .dotnet-cta__inner {
+    padding: 0 24px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1070,6 +1127,26 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   .stats__grid { grid-template-columns: 1fr 1fr; gap: 30px 16px; }
   .circuit-timeline__steps { grid-template-columns: 1fr; }
   .container { padding: 0 20px; }
+  .modal__scroll { padding: 32px 20px 24px; }
+  .modal__panel { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
+  .checkout-modal__panel { width: min(480px, 100vw); }
+  .navbar__actions { gap: 8px; }
+  .navbar__action-btn { padding: 8px; }
+  .cybersecurity-hero__decor,
+  .data-analytics-hero__decor,
+  .frontend-hero__decor,
+  .ui-ux-hero__decor,
+  .dotnet-hero__decor {
+    width: 220px;
+    height: 220px;
+  }
+  .cybersecurity-cta__inner,
+  .data-analytics-cta__inner,
+  .frontend-cta__inner,
+  .ui-ux-cta__inner,
+  .dotnet-cta__inner {
+    padding: 0 20px;
+  }
 }
 .team-card__photo img {
   width: 100%;
@@ -1782,4 +1859,24 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
    ========================================================================== */
 @media (max-width: 480px) {
   .checkout-modal__scroll { padding: 32px 20px 24px; }
+}
+
+/* ==========================================================================
+   Responsive — Thank You Popup
+   ========================================================================== */
+@media (max-width: 780px) {
+  .thankyou-popup__panel {
+    padding: 40px 24px 32px;
+    width: 92%;
+    border-radius: var(--radius-md);
+  }
+}
+@media (max-width: 480px) {
+  .thankyou-popup__panel {
+    padding: 36px 20px 28px;
+    width: 94%;
+    border-radius: var(--radius-md);
+  }
+  .thankyou-popup h2 { font-size: 1.35rem; }
+  .thankyou-popup p { font-size: 0.95rem; }
 }
