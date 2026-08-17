@@ -61,7 +61,7 @@ module.exports = async function handler(req, res) {
   }
   const { kind, data } = body || {};
 
-  if (!data || (kind !== 'request' && kind !== 'contact')) {
+  if (!data || (kind !== 'request' && kind !== 'contact' && kind !== 'order' && kind !== 'newsletter')) {
     res.status(400).json({ error: 'Invalid request.' });
     return;
   }
@@ -72,11 +72,15 @@ module.exports = async function handler(req, res) {
       auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD }
     });
 
-    const replyTo = kind === 'request' ? data.email : data.email;
+    const replyTo = kind === 'request' ? data.email : kind === 'order' ? data.customerEmail : kind === 'newsletter' ? data.email : data.email;
     const subject = kind === 'request'
       ? `New Service Request — ${data.fullName || 'Website Visitor'}`
-      : `New Contact Message — ${data.subject || ''}`;
-    const html = kind === 'request' ? buildRequestEmailHtml(data) : buildContactEmailHtml(data);
+      : kind === 'order'
+        ? `New Order Received — ${data.customerEmail || 'Website Visitor'}`
+        : kind === 'newsletter'
+          ? `New Newsletter Subscription — ${data.email || 'Website Visitor'}`
+          : `New Contact Message — ${data.subject || ''}`;
+    const html = kind === 'request' ? buildRequestEmailHtml(data) : kind === 'order' ? buildOrderEmailHtml(data) : kind === 'newsletter' ? buildNewsletterEmailHtml(data) : buildContactEmailHtml(data);
 
     await transporter.sendMail({
       from: `"VOLTIX Website" <${GMAIL_USER}>`,
@@ -199,11 +203,65 @@ function buildContactEmailHtml(data) {
     </table>
 
     ${sectionTitle('Message')}
-    <p style="font-family:${EMAIL_FONT};margin:0;color:#1c2b30;font-size:14px;line-height:1.65;">${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
+    <p style="font-family:${EMAIL_FONT};margin:0 0 14px;color:#1c2b30;font-size:14px;line-height:1.65;">${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
   `;
 
   return emailShell({
     heading: 'New Contact Message',
+    submittedAt: data.submitted_at,
+    bodyHtml: body
+  });
+}
+
+function buildOrderEmailHtml(data) {
+  const itemsHtml = (data.items || [])
+    .map(
+      (item) =>
+        `<tr>
+        <td style="font-family:${EMAIL_FONT};padding:11px 14px;border-bottom:1px solid #e2e8ea;color:#1c2b30;font-size:14px;line-height:1.55;vertical-align:top;">${escapeHtml(item.title)}</td>
+        <td style="font-family:${EMAIL_FONT};padding:11px 14px;border-bottom:1px solid #e2e8ea;color:#6b7a80;font-size:13px;font-weight:500;width:38%;vertical-align:top;text-align:center;">x${escapeHtml(String(item.quantity))}</td>
+      </tr>`
+    )
+    .join('');
+
+  const body = `
+    ${sectionTitle('Customer Information')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+      ${emailRow('Customer Email', data.customerEmail)}
+      ${emailRow('Customer Phone', data.customerPhone)}
+    </table>
+
+    ${sectionTitle('Order Items')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+      <tr>
+        <th style="font-family:${EMAIL_FONT};padding:11px 14px;border-bottom:2px solid #dfe7e9;color:#0e7aa3;font-size:13px;font-weight:700;text-align:left;width:62%;">Product</th>
+        <th style="font-family:${EMAIL_FONT};padding:11px 14px;border-bottom:2px solid #dfe7e9;color:#0e7aa3;font-size:13px;font-weight:700;text-align:center;width:38%;">Quantity</th>
+      </tr>
+      ${itemsHtml || `<tr><td colspan="2" style="font-family:${EMAIL_FONT};padding:11px 14px;color:#6b7a80;font-size:14px;">No items in order.</td></tr>`}
+    </table>
+
+    ${sectionTitle('Notes')}
+    <p style="font-family:${EMAIL_FONT};margin:0 0 14px;color:#1c2b30;font-size:14px;line-height:1.65;">${data.notes && data.notes.trim() ? escapeHtml(data.notes).replace(/\n/g, '<br>') : '—'}</p>
+  `;
+
+  return emailShell({
+    heading: 'New Order Received',
+    submittedAt: data.submitted_at,
+    bodyHtml: body
+  });
+}
+
+function buildNewsletterEmailHtml(data) {
+  const body = `
+    ${sectionTitle('Subscription Information')}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+      ${emailRow('Email', data.email)}
+      ${emailRow('Submitted At', data.submitted_at)}
+    </table>
+  `;
+
+  return emailShell({
+    heading: 'New Newsletter Subscription',
     submittedAt: data.submitted_at,
     bodyHtml: body
   });

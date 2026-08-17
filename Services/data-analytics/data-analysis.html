@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Data Analytics — VOLTIX</title>
+  <meta name="description" content="Browse VOLTIX's curated data analytics products: visualization, business intelligence, data engineering, machine learning, predictive analytics, and dashboard design solutions.">
+  <meta name="keywords" content="VOLTIX, Voltix EG, data analytics, data visualization, business intelligence, data engineering, machine learning, predictive analytics, dashboard design, ETL pipelines">
+  <meta name="author" content="VOLTIX">
+  <link rel="canonical" href="https://voltix-eg.vercel.app/services/data-analytics/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VOLTIX">
+  <meta property="og:title" content="Data Analytics — VOLTIX">
+  <meta property="og:description" content="Browse VOLTIX's curated data analytics products: visualization, BI, data engineering, ML, predictive analytics, and dashboard design.">
+  <meta property="og:image" content="https://voltix-eg.vercel.app/assets/logo.png">
+  <meta property="og:url" content="https://voltix-eg.vercel.app/services/data-analytics/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Data Analytics — VOLTIX">
+  <meta name="twitter:description" content="Browse VOLTIX's curated data analytics products: visualization, BI, data engineering, ML, predictive analytics, and dashboard design.">
+  <meta name="twitter:image" content="https://voltix-eg.vercel.app/assets/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../../assets/logo.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="data-analysis.css">
+</head>
+<body>
+
+  <!-- Noise overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="../../index.html" class="navbar__brand" aria-label="VOLTIX home">
+        <img src="../../assets/logo.png" alt="VOLTIX logo" class="navbar__logo">
+        <span>VOLTIX</span>
+      </a>
+
+      <nav class="navbar__links" id="navLinks" aria-label="Primary">
+        <a href="../../index.html">Home</a>
+        <a href="../../services/Front End/frontend.html">Frontend</a>
+        <a href="../UI-UX/ui-ux.html">UI/UX</a>
+        <a href="data-analysis.html" class="is-active">Data Analytics</a>
+        <a href="../cybersecurity/cybersecurity.html">Cybersecurity</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <button class="navbar__action-btn" id="openFavSidebar" aria-label="Open favourites" type="button">
+          <i class="fa-solid fa-heart" aria-hidden="true"></i>
+          <span class="navbar__action-badge" id="favCount" style="display:none">0</span>
+        </button>
+        <button class="navbar__action-btn" id="openCartSidebar" aria-label="Open cart" type="button">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          <span class="navbar__action-badge" id="cartCount" style="display:none">0</span>
+        </button>
+        <button class="btn btn--primary btn--sm" id="openModalDataAnalyticsNav" aria-haspopup="dialog" aria-controls="requestModal" type="button">
+          <span>Request a Service</span>
+        </button>
+        <button class="navbar__burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="service-page">
+
+    <!-- ===================== DATA ANALYTICS HERO ===================== -->
+    <section class="data-analytics-hero">
+      <div class="data-analytics-hero__decor" aria-hidden="true"></div>
+      <div class="container data-analytics-hero__inner">
+        <p class="data-analytics-hero__eyebrow">Data Analytics</p>
+        <h1 class="data-analytics-hero__title">
+          Turn data into<br><span>decisions.</span>
+        </h1>
+        <p class="data-analytics-hero__subtitle">
+          Explore ready-to-order data analytics solutions — from visualization and business
+          intelligence to machine learning and predictive modeling — built by VOLTIX.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== CATALOG TOOLBAR ===================== -->
+    <div class="catalog-toolbar">
+      <div class="catalog-toolbar__inner">
+        <div class="catalog-search">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input type="text" id="catalogSearch" placeholder="Search data analytics products..." autocomplete="off">
+        </div>
+        <nav class="category-nav" id="categoryNav" aria-label="Product categories"></nav>
+      </div>
+    </div>
+
+    <!-- ===================== PRODUCT CATALOG ===================== -->
+    <section class="catalog">
+      <div class="container">
+        <div class="catalog__grid" id="catalogGrid">
+          <!-- Products rendered dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA ===================== -->
+    <section class="data-analytics-cta">
+      <div class="data-analytics-cta__inner">
+        <h2 class="data-analytics-cta__title">
+          Ready to unlock<br>your data's <span>potential?</span>
+        </h2>
+        <p class="data-analytics-cta__text">
+          Tell us what you need and we'll map the right analytics solution — from a single
+          dashboard to a full data platform.
+        </p>
+        <button class="btn btn--primary btn--lg ripple" id="openModalDataAnalyticsCta" type="button">
+          <span>Request a Service</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8H15M15 8L9 2M15 8L9 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== CHECKOUT MODAL ===================== -->
+  <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" aria-hidden="true">
+    <div class="checkout-modal__backdrop" id="checkoutBackdrop"></div>
+    <div class="checkout-modal__panel">
+      <button class="checkout-modal__close" id="checkoutClose" aria-label="Close checkout" type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <div class="checkout-modal__scroll">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> Checkout</p>
+        <h2 id="checkoutTitle" class="checkout-modal__title">Complete your order</h2>
+        <p class="checkout-modal__sub">Enter your contact details and we'll reach out to confirm your order.</p>
+
+        <form id="checkoutForm" novalidate>
+          <div class="field">
+            <label for="checkoutEmail">Email <span class="req">*</span></label>
+            <input type="email" id="checkoutEmail" name="checkoutEmail" required autocomplete="email">
+            <span class="field__error">Enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="checkoutPhone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="checkoutPhone" name="checkoutPhone" required autocomplete="tel" placeholder="010XXXXXXXX">
+            <span class="field__error">Please enter your phone number.</span>
+          </div>
+
+          <div class="checkout-modal__summary">
+            <h3>Order Summary</h3>
+            <div id="checkoutItems"></div>
+            <div class="checkout-modal__total" id="checkoutTotal"></div>
+          </div>
+
+          <p class="field__error" id="checkoutError" style="display:none;min-height:0;"></p>
+
+          <div class="modal__actions">
+            <button type="button" class="btn btn--ghost" id="checkoutCancel"><span>Cancel</span></button>
+            <button type="submit" class="btn btn--primary ripple"><span>Place Order</span></button>
+          </div>
+        </form>
+
+        <div class="checkout-modal__success" id="checkoutSuccess" hidden>
+          <div class="checkout-modal__success-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Your order has been sent successfully.</h3>
+          <p>We'll contact you shortly to confirm the details.</p>
+          <button class="btn btn--primary" id="checkoutDone" type="button"><span>Done</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PRODUCT DETAIL MODAL ===================== -->
+  <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" aria-hidden="true">
+    <div class="product-modal__backdrop" id="productModalBackdrop"></div>
+    <div class="product-modal__panel">
+      <button class="product-modal__close" id="productModalClose" aria-label="Close details" type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      <div class="product-modal__body">
+        <div class="product-modal__gallery">
+          <div class="product-modal__media" id="productModalMedia"></div>
+          <button class="product-modal__arrow product-modal__arrow--prev" id="productModalPrev" aria-label="Previous media" type="button"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+          <button class="product-modal__arrow product-modal__arrow--next" id="productModalNext" aria-label="Next media" type="button"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+          <div class="product-modal__counter" id="productModalCounter"></div>
+          <div class="product-modal__thumbs" id="productModalThumbs"></div>
+        </div>
+        <div class="product-modal__info">
+          <span class="product-modal__category" id="productModalCategory"></span>
+          <h2 class="product-modal__name" id="productModalTitle"></h2>
+          <p class="product-modal__desc" id="productModalDesc"></p>
+          <div class="product-modal__tags" id="productModalTags"></div>
+          <div class="product-modal__price" id="productModalPrice"></div>
+          <div class="product-modal__actions">
+            <button class="product-modal__action product-modal__action--fav" id="productModalFav" type="button">
+              <i class="fa-regular fa-heart" aria-hidden="true"></i>
+              <span>Favourite</span>
+            </button>
+            <button class="product-modal__action product-modal__action--cart" id="productModalCart" type="button">
+              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== FAVOURITES SIDEBAR ===================== -->
+  <aside class="side-panel" id="favSidebar" aria-hidden="true">
+    <div class="side-panel__backdrop" data-close="favSidebar"></div>
+    <div class="side-panel__drawer">
+      <div class="side-panel__head">
+        <h3>Favourites</h3>
+        <button class="side-panel__close" data-close="favSidebar" aria-label="Close favourites"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="side-panel__body">
+        <div id="favList"></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== CART SIDEBAR ===================== -->
+  <aside class="side-panel" id="cartSidebar" aria-hidden="true">
+    <div class="side-panel__backdrop" data-close="cartSidebar"></div>
+    <div class="side-panel__drawer">
+      <div class="side-panel__head">
+        <h3>Cart</h3>
+        <button class="side-panel__close" data-close="cartSidebar" aria-label="Close cart"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="side-panel__body">
+        <div id="cartList"></div>
+      </div>
+      <div class="side-panel__foot">
+        <button class="btn btn--primary btn--full" id="checkoutBtn" type="button">
+          <span>Checkout</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8H15M15 8L9 2M15 8L9 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="../../index.html" class="navbar__brand">
+          <img src="../../assets/logo.png" alt="VOLTIX logo" class="navbar__logo">
+          <span>VOLTIX</span>
+        </a>
+        <p>Turning ideas into powerful digital products.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/company/voltix-eg/" aria-label="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+          <a href="https://www.tiktok.com/@voltix.egg?_r=1&_t=ZS-98Pjr6WTSZ5" id="footerTiktok" aria-label="TikTok" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/volti_xeg/" id="footerInstagram" aria-label="Instagram" target="_blank" rel="noopener"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61592502546969" id="footerFacebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="data-analysis.html">Data Analytics</a>
+        <a href="../UI-UX/ui-ux.html">UI/UX Design</a>
+        <a href="../cybersecurity/cybersecurity.html">Cybersecurity</a>
+        <a href="../../services/Front End/frontend.html">Frontend Development</a>
+        <a href="../../index.html#services">Backend Development</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Company</h4>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#process">Process</a>
+        <a href="../../index.html#team">Team</a>
+        <a href="../../index.html#testimonials">Testimonials</a>
+        <a href="../../index.html#faq">FAQ</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Resources</h4>
+        <a href="../../privacy.html" id="privacyLink">Privacy Policy</a>
+        <a href="../../terms.html" id="termsLink">Terms of Service</a>
+        <a href="../../index.html#contact">Contact</a>
+      </div>
+
+      <div class="footer__col footer__newsletter">
+        <h4>Stay in the loop</h4>
+        <p>Occasional notes on what we're building. No spam.</p>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" placeholder="you@company.com" required aria-label="Email address">
+          <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        </form>
+        <p class="newsletter__msg" id="newsletterMsg" role="status"></p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <span>© <span id="year"></span> VOLTIX. All rights reserved.</span>
+        <div class="footer__legal">
+          <a href="../../privacy.html" id="privacyLink2">Privacy Policy</a>
+          <a href="../../terms.html" id="termsLink2">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M12 5l-6 6M12 5l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- ===================== REQUEST SERVICE MODAL ===================== -->
+  <div class="modal" id="requestModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal__backdrop" id="modalBackdrop"></div>
+    <div class="modal__panel">
+      <button class="modal__close" id="closeModal" aria-label="Close form" type="button"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+
+      <div class="modal__scroll">
+        <p class="eyebrow"><span class="eyebrow__dot"></span> New request</p>
+        <h2 id="modalTitle" class="modal__title">Tell us about your project</h2>
+        <p class="modal__sub">Fill in as much as you can — we'll follow up within one business day.</p>
+
+        <form id="requestForm" novalidate>
+
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="fullName">Full Name <span class="req">*</span></label>
+              <input type="text" id="fullName" name="fullName" required autocomplete="name">
+              <span class="field__error">Please enter your full name.</span>
+            </div>
+            <div class="field">
+              <label for="companyName">Company Name</label>
+              <input type="text" id="companyName" name="companyName" autocomplete="organization">
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+              <span class="field__error">Enter a valid email address.</span>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="country">Country <span class="req">*</span></label>
+              <input type="text" id="country" name="country" required autocomplete="country-name">
+              <span class="field__error">Please enter your country.</span>
+            </div>
+            <div class="field">
+              <label for="projectType">Project Type <span class="req">*</span></label>
+              <select id="projectType" name="projectType" required>
+                <option value="" disabled selected>Select a type</option>
+                <option>New Product</option>
+                <option>Redesign</option>
+                <option>Internal Tool</option>
+                <option>Audit / Consulting</option>
+                <option>Other</option>
+              </select>
+              <span class="field__error">Please choose a project type.</span>
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>Service Needed <span class="req">*</span></legend>
+            <div class="chip-group" id="serviceChips">
+              <label class="chip"><input type="checkbox" name="service" value="Data Analytics"><span>Data Analytics</span></label>
+              <label class="chip"><input type="checkbox" name="service" value="UI/UX"><span>UI/UX</span></label>
+              <label class="chip"><input type="checkbox" name="service" value="Cybersecurity"><span>Cybersecurity</span></label>
+              <label class="chip"><input type="checkbox" name="service" value="Frontend"><span>Frontend</span></label>
+              <label class="chip"><input type="checkbox" name="service" value="Backend"><span>Backend</span></label>
+              <label class="chip"><input type="checkbox" name="service" value="Full Project"><span>Full Project</span></label>
+              <label class="chip"><input type="checkbox" name="service" value="Multiple Services"><span>Multiple Services</span></label>
+            </div>
+            <span class="field__error" id="serviceError">Select at least one service.</span>
+          </fieldset>
+
+          <div class="field">
+            <label for="description">Project Description <span class="req">*</span></label>
+            <textarea id="description" name="description" rows="4" required placeholder="What are you building, and what problem does it solve?"></textarea>
+            <span class="field__error">Tell us a little about the project.</span>
+          </div>
+
+          <div class="form__row form__row--2">
+            <div class="field">
+              <label for="budget">Budget <span class="req">*</span></label>
+              <select id="budget" name="budget" required>
+                <option value="" disabled selected>Select a range</option>
+                <option>&lt; $1,000</option>
+                <option>$1,000 – $3,000</option>
+                <option>$3,000 – $5,000</option>
+                <option>$5,000+</option>
+                <option>Other</option>
+              </select>
+              <span class="field__error">Please choose a budget range.</span>
+            </div>
+            <div class="field">
+              <label for="deadline">Deadline</label>
+              <input type="date" id="deadline" name="deadline">
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend>Preferred Contact Method</legend>
+            <div class="radio-group">
+              <label class="radio"><input type="radio" name="contactMethod" value="Email" checked><span>Email</span></label>
+              <label class="radio"><input type="radio" name="contactMethod" value="Phone"><span>Phone</span></label>
+              <label class="radio"><input type="radio" name="contactMethod" value="WhatsApp"><span>WhatsApp</span></label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="files">Upload Files <span class="optional">(optional)</span></label>
+            <div class="file-drop" id="fileDrop">
+              <input type="file" id="files" name="files" multiple>
+              <span id="fileDropText">Drag files here or click to browse</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="notes">Extra Notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Anything else we should know?"></textarea>
+          </div>
+
+          <p class="field__error" id="modalErrorMsg" style="display:none;min-height:0;"></p>
+
+          <div class="modal__actions">
+            <button type="button" class="btn btn--ghost" id="cancelForm"><span>Cancel</span></button>
+            <button type="submit" class="btn btn--primary ripple"><span>Submit Request</span></button>
+          </div>
+        </form>
+
+        <div class="modal__success" id="modalSuccess" hidden>
+          <div class="modal__success-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.5l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Request received</h3>
+          <p>Thanks — a member of the VOLTIX team will reach out within one business day.</p>
+          <button class="btn btn--primary" id="closeSuccess" type="button"><span>Done</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../script.js"></script>
+  <script src="../../shared-state.js"></script>
+  <script src="data-analysis-data.js"></script>
+  <script src="data-analysis.js"></script>
+</body>
+</html>

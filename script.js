@@ -17,6 +17,39 @@ const COMPANY_INFO = {
   instagram: 'https://www.instagram.com/volti_xeg/'           
 };
 
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function showToast(message) {
+  let toast = document.getElementById('voltixToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'voltixToast';
+    toast.style.cssText = `
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      padding: 14px 24px; border-radius: 12px; background: var(--bg-surface);
+      border: 1px solid var(--border-glass-strong); color: var(--white);
+      font-family: var(--font-mono); font-size: 0.85rem; z-index: 500;
+      opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45); white-space: nowrap;
+    `;
+    document.body.appendChild(toast);
+  }
+  toast.textContent = message;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 2800);
+}
+
 /* ==========================================================================
    EMAIL DELIVERY — sends the "Request a Service" form AND the contact form
    straight to COMPANY_INFO.email as a real Gmail email, automatically, with
@@ -363,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalBackdrop = document.getElementById('modalBackdrop');
   const closeModalBtn = document.getElementById('closeModal');
   const cancelFormBtn = document.getElementById('cancelForm');
-  const openers = ['openModalNav', 'openModalHero', 'openModalServices', 'openModalContact']
+  const openers = ['openModalNav', 'openModalHero', 'openModalServices', 'openModalContact', 'openModalFrontend', 'openModalDataAnalytics', 'openModalDataAnalyticsCta', 'openModalFrontendNav', 'openModalUiUxNav', 'openModalUiUxCta', 'openModalCybersecurityNav', 'openModalCybersecurityCta', 'openModalDataAnalyticsNav', 'openModalDotnetNav', 'openModalDotnet']
     .map(id => document.getElementById(id))
     .filter(Boolean);
 
@@ -519,10 +552,22 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------ */
   const newsletterForm = document.getElementById('newsletterForm');
   const newsletterMsg = document.getElementById('newsletterMsg');
-  newsletterForm.addEventListener('submit', (e) => {
+  newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    newsletterMsg.textContent = 'Thanks — you\'re on the list.';
-    newsletterForm.reset();
+    const input = newsletterForm.querySelector('input[type="email"]');
+    const email = input?.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newsletterMsg.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    try {
+      await sendEmail('newsletter', { email, submitted_at: new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) });
+      newsletterMsg.textContent = 'Thanks — you\'re on the list.';
+      newsletterForm.reset();
+    } catch (err) {
+      console.error('VOLTIX newsletter submission failed:', err);
+      newsletterMsg.textContent = "Something went wrong. Please try again, or email us directly at " + COMPANY_INFO.email + ".";
+    }
   });
 
   /* ------------------------------------------------------------------ */
@@ -575,6 +620,265 @@ document.addEventListener('DOMContentLoaded', () => {
         if (submitBtn) submitBtn.disabled = false;
       }
     });
+  }
+
+  /* ------------------------------------------------------------------ */
+  /* 16. Homepage Cart & Favourites                                      */
+  /* ------------------------------------------------------------------ */
+  const homepageFavBtn = document.getElementById('openHomepageFavSidebar');
+  const homepageCartBtn = document.getElementById('openHomepageCartSidebar');
+  const homepageFavSidebar = document.getElementById('homepageFavSidebar');
+  const homepageCartSidebar = document.getElementById('homepageCartSidebar');
+  const homepageFavCount = document.getElementById('homepageFavCount');
+  const homepageCartCount = document.getElementById('homepageCartCount');
+  const homepageFavList = document.getElementById('homepageFavList');
+  const homepageCartList = document.getElementById('homepageCartList');
+
+  if (homepageFavBtn && homepageCartBtn) {
+    function getCombinedProducts() {
+      const products = [];
+      if (typeof FRONTEND_PRODUCTS !== 'undefined') products.push(...FRONTEND_PRODUCTS);
+      if (typeof DATA_ANALYTICS_PRODUCTS !== 'undefined') products.push(...DATA_ANALYTICS_PRODUCTS);
+      return products;
+    }
+
+    function openHomepageSidebar(id) {
+      const panel = document.getElementById(id);
+      if (!panel) return;
+      panel.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (id === 'homepageFavSidebar') renderHomepageFavSidebar();
+      if (id === 'homepageCartSidebar') renderHomepageCartSidebar();
+    }
+
+    function closeHomepageSidebar(id) {
+      const panel = document.getElementById(id);
+      if (!panel) return;
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    function renderHomepageFavSidebar() {
+      const list = document.getElementById('homepageFavList');
+      if (!list) return;
+      const favs = getGlobalFavorites();
+      const allProducts = getCombinedProducts();
+      const items = allProducts.filter(p => favs.includes(p.id));
+      if (!items.length) {
+        list.innerHTML = `<div class="side-panel__empty"><i class="fa-regular fa-heart" aria-hidden="true"></i><p>No favourites yet. Browse our services and tap the heart on any product to save it here.</p></div>`;
+        return;
+      }
+      list.innerHTML = items.map(product => {
+        const imageHtml = product.image ? `<img src="${product.image}" alt="${escapeHtml(product.title)}">` : `<i class="fa-regular fa-image" aria-hidden="true"></i>`;
+        return `<div class="side-panel__item">
+          <div class="side-panel__item-img">${imageHtml}</div>
+          <div class="side-panel__item-body">
+            <div class="side-panel__item-title">${escapeHtml(product.title)}</div>
+            <div class="side-panel__item-meta">${escapeHtml(product.category)}</div>
+          </div>
+          <button class="side-panel__item-action" data-remove-fav="${product.id}" aria-label="Remove from favourites" title="Remove from favourites"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>`;
+      }).join('');
+      list.querySelectorAll('[data-remove-fav]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-remove-fav');
+          toggleGlobalFavorite(id);
+          updateHomepageNavCounts();
+          renderHomepageFavSidebar();
+        });
+      });
+    }
+
+    function renderHomepageCartSidebar() {
+      const list = document.getElementById('homepageCartList');
+      if (!list) return;
+      const globalCart = getGlobalCart();
+      if (!globalCart.length) {
+        list.innerHTML = `<div class="side-panel__empty"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><p>Your cart is empty. Browse our services and tap the cart icon to add items.</p></div>`;
+        return;
+      }
+      list.innerHTML = globalCart.map(item => {
+        const imageHtml = item.image ? `<img src="${item.image}" alt="${escapeHtml(item.title)}">` : `<i class="fa-regular fa-image" aria-hidden="true"></i>`;
+        return `<div class="side-panel__item">
+          <div class="side-panel__item-img">${imageHtml}</div>
+          <div class="side-panel__item-body">
+            <div class="side-panel__item-title">${escapeHtml(item.title)}</div>
+            <div class="side-panel__item-meta">${escapeHtml(item.category)}</div>
+          </div>
+          <button class="side-panel__item-action" data-remove-cart="${item.id}" data-cart-source="${item.source}" aria-label="Remove from cart" title="Remove from cart"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+        </div>`;
+      }).join('');
+      list.querySelectorAll('[data-remove-cart]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-remove-cart');
+          const source = btn.getAttribute('data-cart-source');
+          removeFromGlobalCart(id, source);
+          updateHomepageNavCounts();
+          renderHomepageCartSidebar();
+        });
+      });
+    }
+
+    function updateHomepageNavCounts() {
+      if (homepageFavCount) {
+        const count = getGlobalFavoritesCount();
+        homepageFavCount.textContent = count;
+        homepageFavCount.style.display = count ? 'inline-flex' : 'none';
+      }
+      if (homepageCartCount) {
+        const count = getGlobalCartCount();
+        homepageCartCount.textContent = count;
+        homepageCartCount.style.display = count ? 'inline-flex' : 'none';
+      }
+    }
+
+    homepageFavBtn.addEventListener('click', () => openHomepageSidebar('homepageFavSidebar'));
+    homepageCartBtn.addEventListener('click', () => openHomepageSidebar('homepageCartSidebar'));
+
+    document.querySelectorAll('[data-close="homepageFavSidebar"]').forEach(el => {
+      el.addEventListener('click', () => closeHomepageSidebar('homepageFavSidebar'));
+    });
+    document.querySelectorAll('[data-close="homepageCartSidebar"]').forEach(el => {
+      el.addEventListener('click', () => closeHomepageSidebar('homepageCartSidebar'));
+    });
+
+    const homepageCheckoutBtn = document.getElementById('homepageCheckoutBtn');
+    const homepageCheckoutModal = document.getElementById('homepageCheckoutModal');
+
+    homepageCheckoutBtn?.addEventListener('click', () => {
+      if (!getGlobalCart().length) {
+        showToast('Your cart is empty');
+        return;
+      }
+      openHomepageCheckoutModal();
+    });
+
+    function openHomepageCheckoutModal() {
+      if (!homepageCheckoutModal) return;
+      homepageCheckoutModal.classList.add('is-open');
+      homepageCheckoutModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      renderHomepageCheckoutSummary();
+      const emailInput = document.getElementById('homepageCheckoutEmail');
+      if (emailInput) setTimeout(() => emailInput.focus(), 350);
+    }
+
+    function closeHomepageCheckoutModal() {
+      if (!homepageCheckoutModal) return;
+      homepageCheckoutModal.classList.remove('is-open');
+      homepageCheckoutModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      const form = document.getElementById('homepageCheckoutForm');
+      if (form) {
+        form.hidden = false;
+        form.reset();
+      }
+      const success = document.getElementById('homepageCheckoutSuccess');
+      if (success) success.hidden = true;
+      const error = document.getElementById('homepageCheckoutError');
+      if (error) {
+        error.textContent = '';
+        error.style.display = 'none';
+      }
+    }
+
+    function renderHomepageCheckoutSummary() {
+      const itemsEl = document.getElementById('homepageCheckoutItems');
+      const totalEl = document.getElementById('homepageCheckoutTotal');
+      if (!itemsEl || !totalEl) return;
+      const globalCart = getGlobalCart();
+      itemsEl.innerHTML = globalCart.map(item => `
+        <div class="checkout-modal__item">
+          <span>${escapeHtml(item.title)}</span>
+          <span>× 1</span>
+        </div>
+      `).join('');
+      const total = globalCart.reduce((sum, item) => sum + (item.price || 0), 0);
+      totalEl.textContent = total > 0 ? `Total: $${total.toFixed(2)}` : 'Total: Price on request';
+    }
+
+    async function submitHomepageCheckout(e) {
+      e.preventDefault();
+      const email = document.getElementById('homepageCheckoutEmail');
+      const phone = document.getElementById('homepageCheckoutPhone');
+      const errorEl = document.getElementById('homepageCheckoutError');
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      const submitLabel = submitBtn?.querySelector('span');
+
+      let valid = true;
+      [email, phone].forEach(field => {
+        const wrapper = field.closest('.field');
+        if (!field.value.trim() || (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim()))) {
+          wrapper?.classList.add('has-error');
+          valid = false;
+        } else {
+          wrapper?.classList.remove('has-error');
+        }
+      });
+
+      if (!valid) {
+        errorEl.textContent = 'Please fill in all required fields correctly.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      errorEl.style.display = 'none';
+
+      if (submitBtn) submitBtn.disabled = true;
+      if (submitLabel) submitLabel.textContent = 'Sending…';
+
+      const globalCart = getGlobalCart();
+      const orderData = {
+        customerEmail: email.value.trim(),
+        customerPhone: phone.value.trim(),
+        items: globalCart.map(item => ({ id: item.id, title: item.title, category: item.category, quantity: 1 })),
+        total: globalCart.reduce((sum, item) => sum + (item.price || 0), 0),
+        submitted_at: new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
+      };
+
+      try {
+        await sendEmail('order', orderData);
+        e.target.hidden = true;
+        document.getElementById('homepageCheckoutSuccess').hidden = false;
+        clearGlobalCart();
+        updateHomepageNavCounts();
+        renderHomepageCartSidebar();
+      } catch (err) {
+        console.error('VOLTIX checkout failed:', err);
+        errorEl.textContent = "Something went wrong sending your order. Please try again, or email us directly at " + COMPANY_INFO.email + ".";
+        errorEl.style.display = 'block';
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+        if (submitLabel) submitLabel.textContent = 'Place Order';
+      }
+    }
+
+    document.getElementById('homepageCheckoutForm')?.addEventListener('submit', submitHomepageCheckout);
+    document.getElementById('homepageCheckoutBackdrop')?.addEventListener('click', closeHomepageCheckoutModal);
+    document.getElementById('homepageCheckoutClose')?.addEventListener('click', closeHomepageCheckoutModal);
+    document.getElementById('homepageCheckoutCancel')?.addEventListener('click', closeHomepageCheckoutModal);
+    document.getElementById('homepageCheckoutDone')?.addEventListener('click', closeHomepageCheckoutModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && homepageCheckoutModal?.classList.contains('is-open')) closeHomepageCheckoutModal();
+    });
+
+    ['homepageCheckoutEmail', 'homepageCheckoutPhone'].forEach(id => {
+      const field = document.getElementById(id);
+      if (!field) return;
+      field.addEventListener('input', () => {
+        const wrapper = field.closest('.field');
+        if (wrapper && wrapper.classList.contains('has-error')) {
+          const isEmpty = !field.value.trim();
+          const isBadEmail = field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim());
+          if (!isEmpty && !isBadEmail) wrapper.classList.remove('has-error');
+        }
+      });
+    });
+
+    onGlobalStateChange('cart', updateHomepageNavCounts);
+    onGlobalStateChange('favorites', updateHomepageNavCounts);
+    updateHomepageNavCounts();
   }
 
 });
