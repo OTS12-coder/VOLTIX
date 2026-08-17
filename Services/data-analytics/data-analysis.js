@@ -313,8 +313,8 @@
 
     try {
       await sendEmail('order', orderData);
-      closeCheckoutModal();
-      openThankYouPopup();
+      document.getElementById('checkoutForm').hidden = true;
+      document.getElementById('checkoutSuccess').hidden = false;
       cart = [];
       clearGlobalCart();
       renderCartSidebar();
