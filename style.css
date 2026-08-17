@@ -509,7 +509,13 @@ body::after {
 }
 .service-card--cta h3, .service-card--cta p { color: #06121F; }
 .service-card--cta p { opacity: 0.75; }
-.service-card--cta .btn { align-self: flex-start; background: #06121F; color: var(--white); box-shadow: none; }
+.service-card--cta .btn,
+.service-card--cta .btn:hover {
+  align-self: flex-start;
+  background: #06121F;
+  color: var(--white);
+  box-shadow: none;
+}
 
 /* ==========================================================================
    Why choose us

@@ -839,8 +839,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         await sendEmail('order', orderData);
-        e.target.hidden = true;
-        document.getElementById('homepageCheckoutSuccess').hidden = false;
+        closeHomepageCheckoutModal();
+        openThankYouPopup();
         clearGlobalCart();
         updateHomepageNavCounts();
         renderHomepageCartSidebar();
@@ -897,6 +897,9 @@ document.addEventListener('DOMContentLoaded', () => {
       thankyouPopup?.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
+
+    window.openThankYouPopup = openThankYouPopup;
+    window.closeThankYouPopup = closeThankYouPopup;
 
     thankyouClose?.addEventListener('click', closeThankYouPopup);
     thankyouDone?.addEventListener('click', closeThankYouPopup);
