@@ -510,7 +510,8 @@ body::after {
 .service-card--cta h3, .service-card--cta p { color: #06121F; }
 .service-card--cta p { opacity: 0.75; }
 .service-card--cta .btn,
-.service-card--cta .btn:hover {
+.service-card--cta .btn:hover,
+.service-card--cta .btn:focus {
   align-self: flex-start;
   background: #06121F;
   color: var(--white);
