@@ -254,11 +254,14 @@
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    document.getElementById('checkoutForm').hidden = false;
-    document.getElementById('checkoutSuccess').hidden = true;
-    document.getElementById('checkoutEyebrow').hidden = false;
-    document.getElementById('checkoutTitle').hidden = false;
-    document.getElementById('checkoutSub').hidden = false;
+    document.getElementById('checkoutForm').style.display = '';
+    const successElReset = document.getElementById('checkoutSuccess');
+    successElReset.hidden = true;
+    successElReset.classList.remove('is-visible');
+    successElReset.style.display = 'none';
+    document.getElementById('checkoutEyebrow').style.display = '';
+    document.getElementById('checkoutTitle').style.display = '';
+    document.getElementById('checkoutSub').style.display = '';
     document.getElementById('checkoutForm').reset();
     document.getElementById('checkoutError').textContent = '';
     document.getElementById('checkoutError').style.display = 'none';
@@ -317,11 +320,14 @@
 
     try {
       await sendEmail('order', orderData);
-      document.getElementById('checkoutForm').hidden = true;
-      document.getElementById('checkoutSuccess').hidden = false;
-      document.getElementById('checkoutEyebrow').hidden = true;
-      document.getElementById('checkoutTitle').hidden = true;
-      document.getElementById('checkoutSub').hidden = true;
+      document.getElementById('checkoutForm').style.display = 'none';
+      const successEl = document.getElementById('checkoutSuccess');
+      successEl.hidden = false;
+      successEl.classList.add('is-visible');
+      successEl.style.display = 'block';
+      document.getElementById('checkoutEyebrow').style.display = 'none';
+      document.getElementById('checkoutTitle').style.display = 'none';
+      document.getElementById('checkoutSub').style.display = 'none';
       cart = [];
       clearGlobalCart();
       renderCartSidebar();
@@ -790,4 +796,5 @@
   } else {
     init();
   }
+
 })();
