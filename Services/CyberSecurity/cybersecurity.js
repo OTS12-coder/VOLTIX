@@ -255,6 +255,9 @@
     document.body.style.overflow = '';
     document.getElementById('checkoutForm').hidden = false;
     document.getElementById('checkoutSuccess').hidden = true;
+    document.getElementById('checkoutEyebrow').hidden = false;
+    document.getElementById('checkoutTitle').hidden = false;
+    document.getElementById('checkoutSub').hidden = false;
     document.getElementById('checkoutForm').reset();
     document.getElementById('checkoutError').textContent = '';
     document.getElementById('checkoutError').style.display = 'none';
@@ -313,8 +316,11 @@
 
     try {
       await sendEmail('order', orderData);
-      closeCheckoutModal();
-      openThankYouPopup();
+      document.getElementById('checkoutForm').hidden = true;
+      document.getElementById('checkoutSuccess').hidden = false;
+      document.getElementById('checkoutEyebrow').hidden = true;
+      document.getElementById('checkoutTitle').hidden = true;
+      document.getElementById('checkoutSub').hidden = true;
       cart = [];
       clearGlobalCart();
       renderCartSidebar();
