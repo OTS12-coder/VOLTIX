@@ -239,6 +239,14 @@
   function openCheckoutModal() {
     const modal = document.getElementById('checkoutModal');
     if (!modal) return;
+    document.getElementById('checkoutForm').style.display = '';
+    const successElOpen = document.getElementById('checkoutSuccess');
+    successElOpen.hidden = true;
+    successElOpen.classList.remove('is-visible');
+    successElOpen.style.display = 'none';
+    document.getElementById('checkoutEyebrow').style.display = '';
+    document.getElementById('checkoutTitle').style.display = '';
+    document.getElementById('checkoutSub').style.display = '';
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
