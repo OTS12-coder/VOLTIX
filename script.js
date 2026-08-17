@@ -846,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderHomepageCartSidebar();
       } catch (err) {
         console.error('VOLTIX checkout failed:', err);
-        errorEl.textContent = "Something went wrong sending your order. Please try again, or email us directly at " + COMPANY_INFO.email + ".";
+        errorEl.textContent = "Something went wrong sending your order. Please try again, or email us directly at " + COMPANY_INFO.email + ". (Error: " + (err.message || 'unknown') + ")";
         errorEl.style.display = 'block';
       } finally {
         if (submitBtn) submitBtn.disabled = false;
