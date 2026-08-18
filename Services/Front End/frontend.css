@@ -818,6 +818,9 @@
 }
 
 @media (max-width: 780px) {
+  .navbar__action-btn { width: 34px; height: 34px; }
+  .navbar .btn--primary { padding: 8px 14px; font-size: 0.78rem; gap: 6px; }
+  .navbar .btn--primary span { font-size: 0.78rem; }
   .service-page {
     padding-top: 60px;
   }
@@ -902,6 +905,7 @@
 }
 
 @media (max-width: 600px) {
+  .navbar__action-btn { width: 32px; height: 32px; }
   .catalog__grid {
     gap: 16px;
   }
@@ -922,6 +926,9 @@
 }
 
 @media (max-width: 480px) {
+  .navbar__action-btn { width: 30px; height: 30px; }
+  .navbar .btn--primary { padding: 6px 10px; font-size: 0.7rem; }
+  .navbar .btn--primary span { font-size: 0.7rem; }
   .container { padding: 0 20px; }
   .product-card__body {
     padding: 16px 16px 14px;
@@ -944,6 +951,9 @@
 }
 
 @media (max-width: 390px) {
+  .navbar__action-btn { width: 28px; height: 28px; }
+  .navbar .btn--primary { padding: 4px 7px; font-size: 0.6rem; gap: 4px; }
+  .navbar .btn--primary span { font-size: 0.6rem; }
   .catalog__grid {
     gap: 10px;
   }
@@ -999,6 +1009,9 @@
 }
 
 @media (max-width: 360px) {
+  .navbar__action-btn { width: 28px; height: 28px; }
+  .navbar .btn--primary { padding: 4px 7px; font-size: 0.6rem; gap: 4px; }
+  .navbar .btn--primary span { font-size: 0.6rem; }
   .catalog__grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 8px;
