@@ -223,100 +223,594 @@
 <div class="trace-divider" aria-hidden="true"><svg viewBox="0 0 1200 40" preserveAspectRatio="none"><path class="trace-path" d="M0 20 H420 L460 4 L500 36 L540 20 H1200"/></svg></div>
 
 <!-- ===================== SERVICES ===================== -->
-<section class="section services" id="services">
-  <div class="container">
-    <div class="section__head reveal" data-reveal>
-      <p class="eyebrow"><span class="eyebrow__dot"></span> What we build</p>
-      <h2 class="section__title">Five disciplines.<br>One <span class="text-gradient">connected team.</span></h2>
-      <p class="section__sub">Every engagement draws on the same senior bench — no handoffs between agencies, no lost context.</p>
-    </div>
 
-    <div class="services__grid">
-      <article class="service-card reveal" data-reveal>
-        <div class="service-card__glow"></div>
-        <span class="service-card__index">Analytics</span>
-        <div class="service-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </div>
-        <a href="Services/data-analytics/data-analysis.html" style="color:inherit;text-decoration:none;">
-          <h3>Data Analytics &amp; BI</h3>
-          <p>We turn scattered logs and spreadsheets into live dashboards your team actually opens every morning.</p>
+<section class="section services" id="services"> 
+  <div class="container"> 
+
+    <div class="section__head reveal" data-reveal> 
+      <p class="eyebrow">
+        <span class="eyebrow__dot"></span>
+        What we build
+      </p> 
+
+      <h2 class="section__title">
+        Five disciplines.<br>
+        One <span class="text-gradient">connected team.</span>
+      </h2> 
+
+      <p class="section__sub">
+        Every engagement draws on the same senior bench — no handoffs between agencies, no lost context.
+      </p> 
+    </div> 
+
+
+    <div class="services__grid"> 
+
+
+      <!-- =====================================================
+           DATA ANALYTICS & BI
+      ====================================================== -->
+
+      <article class="service-card reveal" data-reveal> 
+
+        <div class="service-card__glow"></div> 
+
+        <span class="service-card__index">Analytics</span> 
+
+        <div class="service-card__icon service-logo"> 
+          <img
+            src="https://api.iconify.design/logos:microsoft-power-bi.svg"
+            alt="Power BI"
+          >
+        </div> 
+
+        <a
+          href="Services/data-analytics/data-analysis.html"
+          style="color:inherit;text-decoration:none;"
+        > 
+          <h3>Data Analytics &amp; BI</h3> 
+
+          <p>
+            We turn scattered logs and spreadsheets into live dashboards your team actually opens every morning.
+          </p> 
+        </a> 
+
+        <ul class="service-card__tags">
+          <li>Pipelines</li>
+          <li>Dashboards</li>
+          <li>Analysis</li>
+          <li>Reporting</li>
+          <li>Insights</li>
+        </ul> 
+
+        <a
+          class="btn btn--light service-card__explore-btn"
+          href="Services/data-analytics/data-analysis.html"
+        >
+          Explore Service
         </a>
-        <ul class="service-card__tags"><li>Pipelines</li><li>Dashboards</li><li>Analysis</li><li>Reporting</li><li>Insights</li></ul>
-      </article>
 
-      <article class="service-card reveal" data-reveal style="--d:1">
-        <div class="service-card__glow"></div>
-        <span class="service-card__index">Design</span>
-        <div class="service-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </div>
-        <a href="Services/UI-UX/ui-ux.html" style="color:inherit;text-decoration:none;">
-          <h3>UI / UX Design</h3>
-          <p>Interfaces mapped to real user behaviour, prototyped in days and stress-tested before a line of code exists.</p>
+      </article> 
+
+
+      <!-- =====================================================
+           UI / UX DESIGN
+      ====================================================== -->
+
+      <article
+        class="service-card reveal"
+        data-reveal
+        style="--d:1"
+      > 
+
+        <div class="service-card__glow"></div> 
+
+        <span class="service-card__index">Design</span> 
+
+        <div class="service-card__icon service-logo"> 
+          <img
+            src="https://api.iconify.design/logos:figma.svg"
+            alt="Figma"
+          >
+        </div> 
+
+        <a
+          href="Services/UI-UX/ui-ux.html"
+          style="color:inherit;text-decoration:none;"
+        > 
+          <h3>UI / UX Design</h3> 
+
+          <p>
+            Interfaces mapped to real user behaviour, prototyped in days and stress-tested before a line of code exists.
+          </p> 
+        </a> 
+
+        <ul class="service-card__tags">
+          <li>Research</li>
+          <li>Prototyping</li>
+          <li>Design systems</li>
+          <li>Wireframing</li>
+        </ul> 
+
+        <a
+          class="btn btn--light service-card__explore-btn"
+          href="Services/UI-UX/ui-ux.html"
+        >
+          Explore Service
         </a>
-        <ul class="service-card__tags"><li>Research</li><li>Prototyping</li><li>Design systems</li><li>Wireframing</li><li>Usability testing</li></ul>
-      </article>
 
-      <article class="service-card reveal" data-reveal style="--d:2">
-        <div class="service-card__glow"></div>
-        <span class="service-card__index">Security</span>
-        <div class="service-card__icon">
-          <svg width="26" 26" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 6.5V12C3 16.9 6.8 21.4 12 22.5C17.2 21.4 21 16.9 21 12V6.5L12 2Z" stroke="currentColor" stroke-width="1.6"/></svg>
-        </div>
-        <a href="Services/CyberSecurity/cybersecurity.html" style="color:inherit;text-decoration:none;">
-          <h3>Cybersecurity</h3>
-          <p>Threat modelling, penetration testing, and hardened infrastructure so launch day isn't a gamble.</p>
+      </article> 
+
+
+      <!-- =====================================================
+           CYBERSECURITY
+      ====================================================== -->
+
+      <article
+        class="service-card reveal"
+        data-reveal
+        style="--d:2"
+      > 
+
+        <div class="service-card__glow"></div> 
+
+        <span class="service-card__index">Security</span> 
+
+        <div class="service-card__icon service-logo"> 
+          <img
+            src="https://api.iconify.design/devicon:kalilinux.svg"
+            alt="Kali Linux"
+          >
+        </div> 
+
+        <a
+          href="Services/CyberSecurity/cybersecurity.html"
+          style="color:inherit;text-decoration:none;"
+        > 
+          <h3>Cybersecurity</h3> 
+
+          <p>
+            Threat modelling, penetration testing, and hardened infrastructure so launch day isn't a gamble.
+          </p> 
+        </a> 
+
+        <ul class="service-card__tags">
+          <li>Audits</li>
+          <li>Pen testing</li>
+          <li>Compliance</li>
+          <li>Threat modelling</li>
+          <li>Incident response</li>
+        </ul> 
+
+        <a
+          class="btn btn--light service-card__explore-btn"
+          href="Services/CyberSecurity/cybersecurity.html"
+        >
+          Explore Service
         </a>
-        <ul class="service-card__tags"><li>Audits</li><li>Pen testing</li><li>Compliance</li><li>Threat modelling</li><li>Incident response</li></ul>
-      </article>
 
-      <article class="service-card reveal" data-reveal style="--d:3">
-        <div class="service-card__glow"></div>
-        <span class="service-card__index">Frontend</span>
-        <div class="service-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.6"/></svg>
-        </div>
-        <a href="Services/Front End/frontend.html" style="color:inherit;text-decoration:none;">
-          <h3>Frontend Development</h3>
-          <p>Pixel-true, animation-rich interfaces that stay fast on a five-year-old phone and a slow connection.</p>
+      </article> 
+
+
+      <!-- =====================================================
+           FRONTEND DEVELOPMENT
+      ====================================================== -->
+
+      <article
+        class="service-card reveal"
+        data-reveal
+        style="--d:3"
+      > 
+
+        <div class="service-card__glow"></div> 
+
+        <span class="service-card__index">Frontend</span> 
+
+        <div class="service-card__icon service-logo"> 
+          <img
+            src="https://api.iconify.design/logos:react.svg"
+            alt="React"
+          >
+        </div> 
+
+        <a
+          href="Services/Front End/frontend.html"
+          style="color:inherit;text-decoration:none;"
+        > 
+          <h3>Frontend Development</h3> 
+
+          <p>
+            Pixel-true, animation-rich interfaces that stay fast on a five-year-old phone and a slow connection.
+          </p> 
+        </a> 
+
+        <ul class="service-card__tags">
+          <li>Web apps</li>
+          <li>Motion</li>
+          <li>Performance</li>
+          <li>Responsive design</li>
+          <li>Accessibility</li>
+        </ul> 
+
+        <a
+          class="btn btn--light service-card__explore-btn"
+          href="Services/Front End/frontend.html"
+        >
+          Explore Service
         </a>
-        <ul class="service-card__tags"><li>Web apps</li><li>Motion</li><li>Performance</li><li>Responsive design</li><li>Accessibility</li></ul>
-      </article>
 
-      <article class="service-card reveal" data-reveal style="--d:4">
-        <div class="service-card__glow"></div>
-        <span class="service-card__index">Backend</span>
-        <div class="service-card__icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="8" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" stroke="currentColor" stroke-width="1.6"/></svg>
-        </div>
-        <a href="Services/Backend/dot-net.html" style="color:inherit;text-decoration:none;">
-          <h3>Backend Development</h3>
-          <p>APIs and architecture designed to survive traffic spikes, schema changes, and three years of growth.</p>
+      </article> 
+
+
+      <!-- =====================================================
+           BACKEND DEVELOPMENT
+      ====================================================== -->
+
+      <article
+        class="service-card reveal"
+        data-reveal
+        style="--d:4"
+      > 
+
+        <div class="service-card__glow"></div> 
+
+        <span class="service-card__index">Backend</span> 
+
+        <div class="service-card__icon service-logo"> 
+          <img
+            class="dotnet-logo"
+            src="https://api.iconify.design/devicon:dot-net.svg"
+            alt=".NET"
+          >
+        </div> 
+
+        <a
+          href="Services/Backend/dot-net.html"
+          style="color:inherit;text-decoration:none;"
+        > 
+          <h3>Backend Development</h3> 
+
+          <p>
+            APIs and architecture designed to survive traffic spikes, schema changes, and three years of growth.
+          </p> 
+        </a> 
+
+        <ul class="service-card__tags">
+          <li>APIs</li>
+          <li>Databases</li>
+          <li>Cloud infra</li>
+          <li>Microservices</li>
+          <li>DevOps</li>
+        </ul> 
+
+        <a
+          class="btn btn--light service-card__explore-btn"
+          href="Services/Backend/dot-net.html"
+        >
+          Explore Service
         </a>
-        <ul class="service-card__tags"><li>APIs</li><li>Databases</li><li>Cloud infra</li><li>Microservices</li><li>DevOps</li></ul>
-      </article>
 
-      <article class="service-card service-card--cta reveal" data-reveal style="--d:5">
-  <h3>Not sure which one you need?</h3>
-  <p>Tell us the problem, not the solution — we'll map the right combination of disciplines.</p>
-  <button class="btn btn--primary ripple" id="openModalServices">
-    <span>Start a project</span>
-  </button>
+      </article> 
 
-  <style>
-    .service-card--cta:hover,
-    .service-card--cta:hover h3,
-    .service-card--cta:hover p,
-    .service-card--cta:hover button,
-    .service-card--cta:hover button span {
-      color: #fff !important;
-    }
-  </style>
-</article>
-    </div>
-  </div>
+
+      <!-- =====================================================
+           CTA
+      ====================================================== -->
+
+      <article
+        class="service-card service-card--cta reveal"
+        data-reveal
+        style="--d:5"
+      > 
+
+        <h3>Not sure which one you need?</h3> 
+
+        <p>
+          Tell us the problem, not the solution — we'll map the right combination of disciplines.
+        </p> 
+
+        <button
+          class="btn btn--primary ripple"
+          id="openModalServices"
+        > 
+          <span>Start a project</span> 
+        </button> 
+
+      </article> 
+
+    </div> 
+  </div> 
 </section>
+
+
+<style>
+
+/* ============================================================
+   SERVICE LOGOS
+   ============================================================
+
+   IMPORTANT:
+   The original card layout is NOT changed.
+   We only control the image inside the existing icon box.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   EXISTING ICON CONTAINER
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo {
+
+
+  display: flex !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  overflow: hidden !important;
+
+  box-sizing: border-box !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   ALL REAL LOGOS
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo img {
+
+  width: 30px !important;
+  height: 30px !important;
+
+  min-width: 30px !important;
+  min-height: 30px !important;
+
+  max-width: 30px !important;
+  max-height: 30px !important;
+
+  display: block !important;
+
+  object-fit: contain !important;
+
+  object-position: center !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  opacity: 1 !important;
+
+  filter: none !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   POWER BI
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo img[alt="Power BI"] {
+
+  width: 30px !important;
+  height: 30px !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   FIGMA
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo img[alt="Figma"] {
+
+  width: 31px !important;
+  height: 31px !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   KALI LINUX
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo img[alt="Kali Linux"] {
+
+  width: 32px !important;
+  height: 32px !important;
+
+  min-width: 32px !important;
+  min-height: 32px !important;
+
+  max-width: 32px !important;
+  max-height: 32px !important;
+
+  object-fit: contain !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   REACT
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo img[alt="React"] {
+
+  width: 31px !important;
+  height: 31px !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   .NET
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo img.dotnet-logo {
+
+  width: 32px !important;
+  height: 32px !important;
+
+  min-width: 32px !important;
+  min-height: 32px !important;
+
+  max-width: 32px !important;
+  max-height: 32px !important;
+
+  object-fit: contain !important;
+
+  /*
+   * Rounded corners for the .NET logo.
+   */
+
+  border-radius: 7px !important;
+
+  overflow: hidden !important;
+
+  clip-path: inset(0 round 7px) !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   LOGO HOVER
+   ------------------------------------------------------------ */
+
+.services .service-card:hover .service-card__icon.service-logo img {
+
+  transform: scale(1.08) !important;
+
+  transition:
+    transform 0.3s ease !important;
+
+}
+
+
+/* Keep .NET rounded while hovering */
+
+.services .service-card:hover .service-card__icon.service-logo img.dotnet-logo {
+
+  border-radius: 7px !important;
+
+  clip-path: inset(0 round 7px) !important;
+
+}
+
+
+/* ------------------------------------------------------------
+   REMOVE SVG IF OLD SVG RULES EXIST
+   ------------------------------------------------------------ */
+
+.services .service-card__icon.service-logo svg {
+
+  display: none !important;
+
+}
+
+
+/* ============================================================
+   CTA
+   ============================================================ */
+
+.services .service-card--cta:hover,
+.services .service-card--cta:hover h3,
+.services .service-card--cta:hover p,
+.services .service-card--cta:hover button,
+.services .service-card--cta:hover button span {
+
+  color: #fff !important;
+
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .services .service-card__icon.service-logo img {
+
+    width: 28px !important;
+    height: 28px !important;
+
+    min-width: 28px !important;
+    min-height: 28px !important;
+
+    max-width: 28px !important;
+    max-height: 28px !important;
+
+  }
+
+
+  .services .service-card__icon.service-logo img[alt="Kali Linux"],
+  .services .service-card__icon.service-logo img.dotnet-logo {
+
+    width: 30px !important;
+    height: 30px !important;
+
+    min-width: 30px !important;
+    min-height: 30px !important;
+
+    max-width: 30px !important;
+    max-height: 30px !important;
+
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .services .service-card__icon.service-logo img {
+
+    width: 26px !important;
+    height: 26px !important;
+
+    min-width: 26px !important;
+    min-height: 26px !important;
+
+    max-width: 26px !important;
+    max-height: 26px !important;
+
+  }
+
+
+  .services .service-card__icon.service-logo img[alt="Kali Linux"],
+  .services .service-card__icon.service-logo img.dotnet-logo {
+
+    width: 28px !important;
+    height: 28px !important;
+
+    min-width: 28px !important;
+    min-height: 28px !important;
+
+    max-width: 28px !important;
+    max-height: 28px !important;
+
+  }
+
+
+  .services .service-card__icon.service-logo img.dotnet-logo {
+
+    border-radius: 6px !important;
+
+    clip-path: inset(0 round 6px) !important;
+
+  }
+
+}
+
+</style>
 
 <!-- ===================== WHY CHOOSE US ===================== -->
 <section class="section why" id="why">

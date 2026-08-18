@@ -10,6 +10,7 @@
   /* ------------------------------------------------------------------ */
   let activeCategory = 'all';
   let searchQuery = '';
+  let categoriesExpanded = false;
   let favorites = new Set();
   let cart = [];
 
@@ -620,6 +621,9 @@
     const nav = document.getElementById('categoryNav');
     if (!nav) return;
 
+    const total = DATA_ANALYTICS_CATEGORIES.length;
+    const maxVisible = 4;
+
     DATA_ANALYTICS_CATEGORIES.forEach(cat => {
       const btn = document.createElement('button');
       btn.className = 'category-nav__btn';
@@ -630,6 +634,33 @@
       btn.addEventListener('click', () => setCategory(cat.id));
       nav.appendChild(btn);
     });
+
+    if (total > maxVisible) {
+      const moreBtn = document.createElement('button');
+      moreBtn.className = 'category-nav__more';
+      moreBtn.type = 'button';
+      moreBtn.id = 'categoryMore';
+      updateMoreButton(moreBtn, total, maxVisible);
+      moreBtn.addEventListener('click', toggleCategories);
+      nav.appendChild(moreBtn);
+      nav.classList.add('category-nav--collapsed');
+    }
+  }
+
+  function updateMoreButton(btn, total, maxVisible) {
+    const hiddenCount = categoriesExpanded ? 0 : total - maxVisible;
+    btn.textContent = categoriesExpanded ? 'Show Less' : `+ ${hiddenCount} More`;
+  }
+
+  function toggleCategories() {
+    categoriesExpanded = !categoriesExpanded;
+    const nav = document.getElementById('categoryNav');
+    const moreBtn = document.getElementById('categoryMore');
+    if (!nav || !moreBtn) return;
+
+    nav.classList.toggle('category-nav--collapsed', !categoriesExpanded);
+    nav.classList.toggle('category-nav--expanded', categoriesExpanded);
+    updateMoreButton(moreBtn, DATA_ANALYTICS_CATEGORIES.length, 4);
   }
 
   function setCategory(id) {
