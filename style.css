@@ -244,6 +244,7 @@ body::after {
   padding: 22px 0;
   transition: padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow .4s var(--ease), transform 0.4s var(--ease);
   border-bottom: 1px solid transparent;
+  overflow: hidden;
 }
 .navbar.is-scrolled {
   padding: 14px 0;
@@ -272,6 +273,7 @@ body::after {
   font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: -0.01em;
+  flex-shrink: 0;
 }
 .navbar__logo { width: 30px; height: 30px; border-radius: 8px; }
 .navbar__links {
@@ -291,7 +293,7 @@ body::after {
 }
 .navbar__links a:hover { color: var(--white); }
 .navbar__links a:hover::after { width: 100%; }
-.navbar__actions { display: flex; align-items: center; gap: 14px; }
+.navbar__actions { display: flex; align-items: center; gap: 14px; flex-shrink: 1; min-width: 0; }
 .navbar__burger {
   display: none;
   flex-direction: column;
@@ -1103,6 +1105,7 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   .navbar__links { display: none; }
   .navbar__burger { display: flex; }
   .navbar__actions { gap: 10px; }
+  .navbar__action-btn { width: 34px; height: 34px; }
   .navbar .btn--primary {
     padding: 8px 14px;
     font-size: 0.78rem;
@@ -1161,7 +1164,7 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   .modal__panel { width: 100vw; height: 100vh; max-height: 100vh; border-radius: 0; }
   .checkout-modal__panel { width: min(480px, 100vw); }
   .navbar__actions { gap: 8px; }
-  .navbar__action-btn { padding: 8px; }
+  .navbar__action-btn { width: 30px; height: 30px; }
   .navbar .btn--primary {
     padding: 6px 10px;
     font-size: 0.7rem;
@@ -1193,6 +1196,8 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   .hero__actions { gap: 12px; }
   .btn--lg { padding: 14px 24px; font-size: 0.95rem; }
   .contact__form { padding: 24px; }
+  .navbar__action-btn { width: 32px; height: 32px; }
+  .navbar__logo { width: 28px; height: 28px; }
 }
 
 @media (max-width: 390px) {
@@ -1203,13 +1208,16 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   .btn { padding: 12px 20px; font-size: 0.85rem; }
   .btn--lg { padding: 12px 22px; font-size: 0.9rem; }
   .btn--sm { padding: 8px 14px; font-size: 0.78rem; }
+  .navbar__action-btn { width: 28px; height: 28px; }
   .navbar .btn--primary {
-    padding: 5px 8px;
-    font-size: 0.65rem;
+    padding: 4px 7px;
+    font-size: 0.6rem;
+    gap: 4px;
   }
   .navbar .btn--primary span {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
+  .navbar__logo { width: 26px; height: 26px; }
   .container { padding: 0 16px; }
 }
 
@@ -1246,7 +1254,7 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
     font-size: 0.6rem;
   }
   .navbar__actions { gap: 6px; }
-  .navbar__action-btn { width: 32px; height: 32px; }
+  .navbar__action-btn { width: 28px; height: 28px; }
   .container { padding: 0 14px; }
   .service-card { padding: 20px 16px; }
   .product-card__body { padding: 14px 14px 12px; }
@@ -1359,6 +1367,7 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s var(--ease);
+  flex-shrink: 0;
 }
 .navbar__action-btn:hover {
   border-color: var(--accent-cyan);

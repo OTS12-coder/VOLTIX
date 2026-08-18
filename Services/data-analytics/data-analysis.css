@@ -103,7 +103,7 @@
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   font-weight: 700;
-  line-height: 1.08;
+  line-height: 1.15;
   margin-bottom: 20px;
   letter-spacing: -0.02em;
 }
@@ -668,21 +668,47 @@
 }
 
 @media (max-width: 780px) {
+  .service-page {
+    padding-top: 60px;
+  }
+  .data-analytics-hero {
+    padding: 44px 0 28px;
+  }
+  .data-analytics-hero__title {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    line-height: 1.15;
+  }
+  .data-analytics-hero__subtitle {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  .catalog-toolbar {
+    position: relative;
+    top: auto;
+    padding: 12px 0;
+  }
   .catalog-toolbar__inner {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
+    padding: 0 20px;
   }
   .catalog-search {
     max-width: 100%;
+    flex: none;
   }
   .category-nav {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+    width: 100%;
   }
   .category-nav__btn {
     justify-content: center;
     text-align: center;
+    white-space: normal;
+    min-width: 0;
+    width: 100%;
   }
   .category-nav--collapsed .category-nav__btn:nth-child(n+5) {
     display: none;
@@ -716,11 +742,12 @@
     color: var(--white);
     background: rgba(34, 211, 238, 0.08);
   }
-  .catalog__grid {
-    grid-template-columns: repeat(2, 1fr);
+  .catalog {
+    padding: 28px 0 48px;
   }
-  .data-analytics-hero {
-    padding: 70px 0 40px;
+  .catalog__grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
   }
 }
 
@@ -750,7 +777,7 @@
     padding: 16px 16px 14px;
   }
   .catalog__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 12px;
   }
   .category-nav {
@@ -794,7 +821,7 @@
 
 @media (max-width: 375px) {
   .catalog__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 8px;
   }
   .product-card__body {
@@ -823,7 +850,7 @@
 
 @media (max-width: 360px) {
   .catalog__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 8px;
   }
   .product-card__body {
