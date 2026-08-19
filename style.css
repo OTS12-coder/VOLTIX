@@ -715,7 +715,7 @@ body::after {
    Testimonials slider
    ========================================================================== */
 .slider { position: relative; max-width: 760px; margin: 0 auto; }
-.slider__track { position: relative; min-height: 220px; }
+.slider__track { position: relative; min-height: 220px; overflow: hidden; }
 .slider__slide {
   position: absolute;
   inset: 0;

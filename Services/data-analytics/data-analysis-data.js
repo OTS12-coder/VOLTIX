@@ -1,312 +1,269 @@
 /* ==========================================================================
    VOLTIX — Data Analytics Products Data
+
    Add, remove, or edit products here. Do NOT edit the card component.
    ========================================================================== */
 
 const DATA_ANALYTICS_CATEGORIES = [
   { id: 'all', name: 'All' },
-  { id: 'data-visualization', name: 'Data Visualization' },
   { id: 'business-intelligence', name: 'Business Intelligence' },
   { id: 'data-engineering', name: 'Data Engineering' },
   { id: 'machine-learning', name: 'Machine Learning' },
-  { id: 'statistical-analysis', name: 'Statistical Analysis' },
-  { id: 'data-mining', name: 'Data Mining' },
-  { id: 'predictive-analytics', name: 'Predictive Analytics' },
-  { id: 'dashboard-design', name: 'Dashboard Design' },
-  { id: 'etl-pipelines', name: 'ETL Pipelines' },
-  { id: 'other', name: 'Other' }
+  { id: 'financial-analytics', name: 'Financial Analytics' },
+  { id: 'sales-retail', name: 'Sales & Retail Analytics' },
+  { id: 'hr-analytics', name: 'HR Analytics' },
+  { id: 'healthcare-analytics', name: 'Healthcare Analytics' },
+  { id: 'market-analytics', name: 'Market Analytics' },
+  { id: 'data-visualization', name: 'Data Visualization' },
+  { id: 'sql-analytics', name: 'SQL & Data Analysis' },
+  { id: 'web-development', name: 'Web Development' }
 ];
 
 const DATA_ANALYTICS_PRODUCTS = [
-  /* ========== DATA VISUALIZATION ========== */
-  {
-    id: 'viz-chart-01',
-    category: 'data-visualization',
-    title: 'Interactive Chart Pack',
-    description: 'A collection of responsive charts — line, bar, area, scatter, and heatmap — built with smooth animations and tooltip interactions.',
-    image: '',
-    tags: ['Charts', 'D3.js', 'Responsive']
-  },
-  {
-    id: 'viz-infographic-01',
-    category: 'data-visualization',
-    title: 'Data Infographic Kit',
-    description: 'A set of animated infographic templates for presenting KPIs, timelines, and comparisons with minimal design overhead.',
-    image: '',
-    tags: ['Infographic', 'Animation', 'KPI']
-  },
-  {
-    id: 'viz-geo-01',
-    category: 'data-visualization',
-    title: 'Geospatial Dashboard',
-    description: 'A map-driven visualization layer with choropleth overlays, drill-down regions, and real-time coordinate streaming.',
-    image: '',
-    tags: ['Maps', 'GeoJSON', 'Real-time']
-  },
-  {
-    id: 'viz-realtime-01',
-    category: 'data-visualization',
-    title: 'Realtime Data Stream UI',
-    description: 'A live-updating visualization panel for streaming metrics with WebSocket integration and auto-scaling axes.',
-    image: '',
-    tags: ['WebSocket', 'Streaming', 'Live']
-  },
 
-  /* ========== BUSINESS INTELLIGENCE ========== */
+  /* ============================================================
+     BUSINESS INTELLIGENCE
+     ============================================================ */
+
   {
-    id: 'bi-report-01',
+    id: 'ezz-production',
     category: 'business-intelligence',
-    title: 'Automated Report Builder',
-    description: 'A drag-and-drop report generator with scheduled exports, PDF/CSV output, and shared dashboard links.',
-    image: '',
-    tags: ['Reports', 'PDF', 'Scheduled']
+    title: 'EZZ Steel — Production Analytics',
+    description:
+      'Compare planned vs. actual production across plants, furnaces, and shifts.',
+    image: 'https://omarabdelpaq.vercel.app/img/ezz-steel-production-analytics.jpg',
+    tags: ['Power BI', 'Power Query', 'DAX']
   },
+
   {
-    id: 'bi-kpi-01',
+    id: 'egyptian-national-team',
     category: 'business-intelligence',
-    title: 'KPI Scorecard',
-    description: 'A balanced scorecard template tracking revenue, churn, NPS, and operational efficiency across departments.',
-    image: '',
-    tags: ['KPI', 'Scorecard', 'Metrics']
-  },
-  {
-    id: 'bi-olap-01',
-    category: 'business-intelligence',
-    title: 'OLAP Cube Explorer',
-    description: 'A multidimensional analysis interface supporting slice-and-dice, drill-through, and pivot table exports.',
-    image: '',
-    tags: ['OLAP', 'Pivot', 'Multidimensional']
-  },
-  {
-    id: 'bi-alert-01',
-    category: 'business-intelligence',
-    title: 'Smart Alert System',
-    description: 'Threshold-based alerting with email, Slack, and SMS notifications backed by anomaly detection rules.',
-    image: '',
-    tags: ['Alerts', 'Anomaly', 'Notifications']
+    title: 'Egyptian National Team Dashboard',
+    description:
+      'An interactive dashboard that transforms football performance data into clear insights about matches, players, results, and team performance.',
+    image: 'https://omarabdelpaq.vercel.app/img/egyptian-national-team-powerbi-dashboard.jpg',
+    tags: ['Power BI', 'Dashboard', 'Analytics']
   },
 
-  /* ========== DATA ENGINEERING ========== */
+
+  /* ============================================================
+     DATA ENGINEERING
+     ============================================================ */
+
   {
-    id: 'eng-pipeline-01',
+    id: 'netflix-etl',
     category: 'data-engineering',
-    title: 'Data Pipeline Orchestrator',
-    description: 'A visual DAG builder for orchestrating extract, transform, and load jobs with dependency management and retries.',
-    image: '',
-    tags: ['DAG', 'Orchestration', 'ETL']
+    title: 'Netflix — ETL & Analytics',
+    description:
+      'Clean and structure raw catalog data to analyze content mix and ratings.',
+    image: 'https://omarabdelpaq.vercel.app/img/netflix-etl-analytics.jpg',
+    tags: ['Python', 'PostgreSQL', 'SQL', 'Power BI']
   },
+
   {
-    id: 'eng-lake-01',
+    id: 'attendance-etl',
     category: 'data-engineering',
-    title: 'Data Lake Ingest Kit',
-    description: 'Schema-on-read ingestion templates for Parquet, Avro, and JSON with automatic partitioning and catalog sync.',
-    image: '',
-    tags: ['Data Lake', 'Parquet', 'Ingestion']
-  },
-  {
-    id: 'eng-quality-01',
-    category: 'data-engineering',
-    title: 'Data Quality Monitor',
-    description: 'A profiling and validation layer that checks completeness, uniqueness, and freshness across upstream sources.',
-    image: '',
-    tags: ['Quality', 'Validation', 'Profiling']
-  },
-  {
-    id: 'eng-stream-01',
-    category: 'data-engineering',
-    title: 'Stream Processing Framework',
-    description: 'A windowed stream processing template with exactly-once semantics, state stores, and dead-letter queues.',
-    image: '',
-    tags: ['Streaming', 'Kafka', 'Windowing']
+    title: 'Attendance ETL & Analytics',
+    description:
+      'An ETL workflow for transforming raw attendance records into structured datasets and actionable attendance insights.',
+    image: 'https://omarabdelpaq.vercel.app/img/attendance-etl-analytics.jpg',
+    tags: ['ETL', 'Data Engineering', 'Analytics']
   },
 
-  /* ========== MACHINE LEARNING ========== */
+
+  /* ============================================================
+     MACHINE LEARNING
+     ============================================================ */
+
   {
-    id: 'ml-classifier-01',
+    id: 'customer-purchase-prediction',
     category: 'machine-learning',
-    title: 'Classification Model Pack',
-    description: 'Pre-trained and customizable classifiers for sentiment, spam, and image categorization with REST endpoints.',
-    image: '',
-    tags: ['Classification', 'NLP', 'REST']
+    title: 'Customer Purchase Prediction ML',
+    description:
+      'A machine learning model designed to predict customer purchase behavior and identify the factors that influence buying decisions.',
+    image: 'https://omarabdelpaq.vercel.app/img/customer-purchase-prediction-ml.jpg',
+    tags: ['Machine Learning', 'Prediction', 'Python']
   },
+
   {
-    id: 'ml-regressor-01',
+    id: 'banking-credit',
     category: 'machine-learning',
-    title: 'Regression Forecaster',
-    description: 'Time-series and multivariate regression models for demand forecasting, pricing, and capacity planning.',
-    image: '',
-    tags: ['Regression', 'Forecasting', 'Time-series']
-  },
-  {
-    id: 'ml-cluster-01',
-    category: 'machine-learning',
-    title: 'Clustering Explorer',
-    description: 'An interactive segmentation tool using K-means, DBSCAN, and hierarchical clustering with silhouette analysis.',
-    image: '',
-    tags: ['Clustering', 'Segmentation', 'EDA']
-  },
-  {
-    id: 'ml-mlops-01',
-    category: 'machine-learning',
-    title: 'MLOps Deployment Kit',
-    description: 'A model serving stack with canary deployments, A/B testing, feature stores, and performance monitoring.',
-    image: '',
-    tags: ['MLOps', 'Serving', 'A/B Testing']
+    title: 'Banking Customer Credit Analysis',
+    description:
+      'Analyze customer financial profiles and credit-related behavior to identify patterns, risks, and factors affecting credit decisions.',
+    image: 'https://omarabdelpaq.vercel.app/img/banking-customer-credit-analysis.jpg',
+    tags: ['Machine Learning', 'Banking', 'Credit']
   },
 
-  /* ========== STATISTICAL ANALYSIS ========== */
+
+  /* ============================================================
+     FINANCIAL ANALYTICS
+     ============================================================ */
+
   {
-    id: 'stat-ab-01',
-    category: 'statistical-analysis',
-    title: 'A/B Test Analyzer',
-    description: 'A significance calculator with confidence intervals, power analysis, and sequential testing guardrails.',
-    image: '',
-    tags: ['A/B Testing', 'Significance', 'Power']
-  },
-  {
-    id: 'stat-anova-01',
-    category: 'statistical-analysis',
-    title: 'ANOVA Dashboard',
-    description: 'A multi-group comparison interface with post-hoc tests, effect sizes, and interactive distribution plots.',
-    image: '',
-    tags: ['ANOVA', 'Hypothesis', 'Distributions']
-  },
-  {
-    id: 'stat-survey-01',
-    category: 'statistical-analysis',
-    title: 'Survey Analysis Suite',
-    description: 'Weighting, cross-tabulation, and thematic coding workflows for large-scale survey datasets.',
-    image: '',
-    tags: ['Survey', 'Weighting', 'Coding']
+    id: 'ezz-financial',
+    category: 'financial-analytics',
+    title: 'EZZ Steel — Financial Analysis',
+    description:
+      'Track revenue growth and profitability trends over time.',
+    image: 'https://omarabdelpaq.vercel.app/img/ezz-steel-financial-analysis-powerbi.jpg',
+    tags: ['Power BI', 'Power Query', 'DAX']
   },
 
-  /* ========== DATA MINING ========== */
+  
+
+  /* ============================================================
+     SALES & RETAIL ANALYTICS
+     ============================================================ */
+
   {
-    id: 'mining-assoc-01',
-    category: 'data-mining',
-    title: 'Association Rule Miner',
-    description: 'A market-basket analysis toolkit with Apriori and FP-Growth implementations and lift visualizations.',
-    image: '',
-    tags: ['Association', 'Apriori', 'FP-Growth']
-  },
-  {
-    id: 'mining-text-01',
-    category: 'data-mining',
-    title: 'Text Mining Pipeline',
-    description: 'End-to-end text mining from tokenization and TF-IDF to topic modeling and named entity recognition.',
-    image: '',
-    tags: ['NLP', 'Topic Modeling', 'NER']
-  },
-  {
-    id: 'mining-web-01',
-    category: 'data-mining',
-    title: 'Web Scraper & Extractor',
-    description: 'A configurable scraping framework with rotating proxies, schema extraction, and structured output pipelines.',
-    image: '',
-    tags: ['Scraping', 'Proxies', 'Schema']
+    id: 'transformer-retail',
+    category: 'sales-retail',
+    title: 'Transformer Company — Retail Analytics',
+    description:
+      'Identify which regions and categories drive sales and profit.',
+    image: 'https://omarabdelpaq.vercel.app/img/retail-sales-profitability.jpg',
+    tags: ['Excel', 'Sales', 'Retail']
   },
 
-  /* ========== PREDICTIVE ANALYTICS ========== */
   {
-    id: 'pred-churn-01',
-    category: 'predictive-analytics',
-    title: 'Customer Churn Predictor',
-    description: 'A churn scoring model with cohort analysis, retention levers, and automated intervention triggers.',
-    image: '',
-    tags: ['Churn', 'Scoring', 'Retention']
-  },
-  {
-    id: 'pred-demand-01',
-    category: 'predictive-analytics',
-    title: 'Demand Forecasting Engine',
-    description: 'Seasonal demand predictions with calendar-aware features, promotion lift, and safety stock recommendations.',
-    image: '',
-    tags: ['Demand', 'Seasonality', 'Inventory']
-  },
-  {
-    id: 'pred-fraud-01',
-    category: 'predictive-analytics',
-    title: 'Fraud Detection Model',
-    description: 'A real-time anomaly scoring system with rule-engine fallback, case management, and model drift tracking.',
-    image: '',
-    tags: ['Fraud', 'Anomaly', 'Real-time']
+    id: 'online-shop',
+    category: 'sales-retail',
+    title: 'Online Shop Sales Analytics',
+    description:
+      'Analyze online store sales to understand product performance, customer purchasing behavior, revenue trends, and overall business performance.',
+    image: 'https://omarabdelpaq.vercel.app/img/online-shop-sales-analytics.jpg',
+    tags: ['Excel', 'E-commerce', 'Sales']
   },
 
-  /* ========== DASHBOARD DESIGN ========== */
+
+  /* ============================================================
+     HR ANALYTICS
+     ============================================================ */
+
+ {
+  id: 'hr-workforce',
+  category: 'hr-analytics',
+  title: 'HR Workforce & Performance Analytics',
+  description:
+    'Give HR one view of headcount, turnover, and performance ratings.',
+  image: 'https://omarabdelpaq.vercel.app/img/hr-workforce-analytics.jpg',
+  tags: ['Excel'],
+},
+
+
+  /* ============================================================
+     HEALTHCARE ANALYTICS
+     ============================================================ */
+
   {
-    id: 'dash-exec-01',
-    category: 'dashboard-design',
-    title: 'Executive Dashboard',
-    description: 'A high-level C-suite dashboard with revenue, margin, and headcount tiles plus trend sparklines.',
-    image: '',
-    tags: ['Executive', 'C-suite', 'Tiles']
-  },
-  {
-    id: 'dash-ops-01',
-    category: 'dashboard-design',
-    title: 'Operations Command Center',
-    description: 'A real-time ops dashboard for SLA tracking, incident response, and capacity heatmaps.',
-    image: '',
-    tags: ['Operations', 'SLA', 'Command']
-  },
-  {
-    id: 'dash-fin-01',
-    category: 'dashboard-design',
-    title: 'Financial Analytics Dashboard',
-    description: 'A P&L, cash flow, and budget variance dashboard with drill-to-transaction and period-over-period comparisons.',
-    image: '',
-    tags: ['Finance', 'P&L', 'Budget']
+    id: 'patient-no-show',
+    category: 'healthcare-analytics',
+    title: 'Patient No-Show Analysis',
+    description:
+      'Understand attendance patterns behind missed appointments.',
+    image: 'https://omarabdelpaq.vercel.app/img/patient-appointment-attendance.jpg',
+    tags: ['Excel', 'Healthcare', 'Analytics']
   },
 
-  /* ========== ETL PIPELINES ========== */
   {
-    id: 'etl-sql-01',
-    category: 'etl-pipelines',
-    title: 'SQL ETL Framework',
-    description: 'A parameterized SQL-based ETL framework with idempotent loads, audit logs, and rollback procedures.',
-    image: '',
-    tags: ['SQL', 'Idempotent', 'Audit']
-  },
-  {
-    id: 'etl-nosql-01',
-    category: 'etl-pipelines',
-    title: 'NoSQL Sync Pipeline',
-    description: 'Change-data-capture pipelines syncing relational data to document and graph stores with schema evolution.',
-    image: '',
-    tags: ['NoSQL', 'CDC', 'Graph']
-  },
-  {
-    id: 'etl-schedule-01',
-    category: 'etl-pipelines',
-    title: 'Job Scheduler & Monitor',
-    description: 'A cron-based job scheduler with dependency graphs, failure alerts, and historical run analytics.',
-    image: '',
-    tags: ['Scheduler', 'Cron', 'Monitoring']
+    id: 'hospital-admission',
+    category: 'healthcare-analytics',
+    title: 'Hospital Admission Analytics',
+    description:
+      'Analyze hospital admission data to identify patient trends, admission patterns, and operational insights that can support healthcare decision-making.',
+    image: 'https://omarabdelpaq.vercel.app/img/hospital-admission-analytics.jpg',
+    tags: ['Healthcare', 'Hospital', 'Analytics']
   },
 
-  /* ========== OTHER ========== */
+
+  /* ============================================================
+     MARKET ANALYTICS
+     ============================================================ */
+
   {
-    id: 'coming-soon-01',
-    category: 'other',
-    title: 'Coming Soon Template',
-    description: 'A placeholder data analytics landing page with countdown, email capture, and service teaser cards.',
-    image: '',
-    tags: ['Coming Soon', 'Landing', 'Teaser']
+    id: 'car-market',
+    category: 'market-analytics',
+    title: 'Car Market Analysis',
+    description:
+      'Explore automotive market data to compare vehicle characteristics, pricing patterns, and factors influencing car market performance.',
+    image: 'https://omarabdelpaq.vercel.app/img/car-market-analysis-dashboard.jpg',
+    tags: ['Market Analysis', 'Automotive', 'Data Analysis']
   },
+
   {
-    id: 'data-catalog-01',
-    category: 'other',
-    title: 'Data Catalog Starter',
-    description: 'A browsable metadata catalog with lineage graphs, ownership tags, and search across tables and reports.',
-    image: '',
-    tags: ['Catalog', 'Lineage', 'Metadata']
+    id: 'mobile-market',
+    category: 'market-analytics',
+    title: 'Mobile Market Analysis',
+    description:
+      'Analyze mobile phone market data to compare products, specifications, pricing, and market trends across different devices.',
+    image: 'https://omarabdelpaq.vercel.app/img/mobile-market-specs-analysis.jpg',
+    tags: ['Market Analysis', 'Mobile', 'Analytics']
   },
+
+
+  /* ============================================================
+     DATA VISUALIZATION
+     ============================================================ */
+
   {
-    id: 'privacy-analytics-01',
-    category: 'other',
-    title: 'Privacy-First Analytics',
-    description: 'A cookieless analytics stack with differential privacy budgets, aggregation thresholds, and consent-aware reporting.',
-    image: '',
-    tags: ['Privacy', 'Differential', 'Consent']
+    id: 'tableau-visualization',
+    category: 'data-visualization',
+    title: 'Tableau Data Visualization',
+    description:
+      'Transform complex datasets into interactive Tableau visualizations that make trends, patterns, and business insights easier to understand.',
+    image: 'https://omarabdelpaq.vercel.app/img/tableau-data-visualization.jpg',
+    tags: ['Tableau', 'Visualization', 'Analytics']
+  },
+
+  {
+    id: 'gemma-analytics',
+    category: 'data-visualization',
+    title: 'Gemma Analytics',
+    description:
+      'A visual analytics project designed to transform business data into clear dashboards, visual insights, and meaningful performance indicators.',
+    image: 'https://omarabdelpaq.vercel.app/img/gemma-analytics.jpg',
+    tags: ['Visualization', 'Dashboard', 'Analytics']
+  },
+
+
+  /* ============================================================
+     SQL & DATA ANALYSIS
+     ============================================================ */
+
+  {
+    id: 'sql-data-analysis',
+    category: 'sql-analytics',
+    title: 'SQL Data Analysis Projects',
+    description:
+      'A collection of SQL analysis projects focused on querying, transforming, aggregating, and extracting meaningful insights from structured datasets.',
+    image: 'https://omarabdelpaq.vercel.app/img/sql-data-analysis-projects.png',
+    tags: ['SQL', 'Data Analysis', 'Database']
+  },
+
+  {
+    id: 'amazon-sales',
+    category: 'sql-analytics',
+    title: 'Amazon Sales Data Analysis',
+    description:
+      'Analyze Amazon sales data to uncover product performance, sales trends, customer behavior, and key business metrics using data-driven analysis.',
+    image: 'https://omarabdelpaq.vercel.app/img/amazon-sales-performance-analysis.jpg',
+    tags: ['SQL', 'Amazon', 'Sales']
+  },
+
+
+  /* ============================================================
+     WEB DEVELOPMENT
+     ============================================================ */
+
+  {
+    id: 'partner-crm',
+    category: 'web-development',
+    title: 'Partner CRM System',
+    description:
+      'A CRM solution designed to organize partner information, simplify relationship management, and provide a structured view of partner activities.',
+    image: 'https://omarabdelpaq.vercel.app/img/partner-crm-system.jpg',
+    tags: ['CRM', 'Web Development', 'Management']
   }
+
 ];

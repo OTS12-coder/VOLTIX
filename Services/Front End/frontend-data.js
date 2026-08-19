@@ -17,19 +17,27 @@ const FRONTEND_CATEGORIES = [
 const FRONTEND_PRODUCTS = [
   /* ========== COMPONENTS ========== */
   {
-    id: 'navbar-01',
-    category: 'components',
-    title: 'Navbar Component',
-    description: 'A sleek responsive navigation bar with mobile hamburger menu and smooth scroll links.',
-    image: ''
-  },
+  id: 'order-button-01',
+  category: 'components',
+  title: 'Animated Order Button',
+  description: 'An interactive order button with a smooth delivery van animation, dynamic hover glow, road effect, and animated success popup.',
+  images: [
+    'assets/images/order-btn/2.png',
+    'assets/images/order-btn/3.png',
+    'assets/images/order-btn/1.png'
+  ],
+  video: 'assets/videos/order-btn.mp4'
+},
   {
-    id: 'hero-01',
-    category: 'components',
-    title: 'Hero Component',
-    description: 'A modern hero section with animated text, gradient accents, and dual call-to-action buttons.',
-    image: ''
-  },
+  id: 'footer-01',
+  category: 'components',
+  title: 'Modern Tech Footer',
+  description: 'A dark-themed modern footer featuring brand identity, social links, navigation categories, newsletter subscription form, copyright bar, and payment options.',
+  images: [
+    'assets/images/Footer/1.png'
+  ],
+  video: 'assets/videos/Footer.mp4'
+},
   {
     id: 'footer-01',
     category: 'components',

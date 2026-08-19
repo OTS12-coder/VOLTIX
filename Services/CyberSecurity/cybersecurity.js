@@ -71,15 +71,16 @@
   function addToCart(product) {
     const existing = cart.find(item => item.id === product.id);
     if (!existing) {
+      const resolvedImage = (product.images && product.images.length) ? product.images[0] : (product.image || '');
       cart.push({
         id: product.id,
         title: product.title,
         category: product.category,
-        image: product.image || '',
+        image: resolvedImage,
         price: product.price || 0,
         source: PAGE_SOURCE
       });
-      addToGlobalCart({ ...product, source: PAGE_SOURCE });
+      addToGlobalCart({ ...product, image: resolvedImage, source: PAGE_SOURCE });
       showToast(`Added "${product.title}" to cart`);
     } else {
       showToast(`"${product.title}" is already in cart`);
@@ -182,7 +183,8 @@
       return;
     }
     list.innerHTML = items.map(product => {
-      const imageHtml = product.image ? `<img src="${product.image}" alt="${escapeHtml(product.title)}">` : `<i class="fa-regular fa-image" aria-hidden="true"></i>`;
+      const favSidebarImage = (product.images && product.images.length) ? product.images[0] : (product.image || '');
+      const imageHtml = favSidebarImage ? `<img src="${favSidebarImage}" alt="${escapeHtml(product.title)}">` : `<i class="fa-regular fa-image" aria-hidden="true"></i>`;
       return `<div class="side-panel__item">
         <div class="side-panel__item-img">${imageHtml}</div>
         <div class="side-panel__item-body">
@@ -525,8 +527,9 @@
       const tagsHtml = product.tags && product.tags.length > 0
         ? `<div class="product-card__tags">${product.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}</div>`
         : '';
-      const imageHtml = product.image
-        ? `<img src="${product.image}" alt="${product.title}" loading="lazy">`
+      const cardImage = (product.images && product.images.length) ? product.images[0] : (product.image || '');
+      const imageHtml = cardImage
+        ? `<img src="${cardImage}" alt="${product.title}" loading="lazy">`
         : `<div class="product-card__placeholder"><i class="fa-regular fa-image" aria-hidden="true"></i><span>Preview coming soon</span></div>`;
 
       return `

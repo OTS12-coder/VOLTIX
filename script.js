@@ -671,7 +671,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       list.innerHTML = items.map(product => {
-        const imageHtml = product.image ? `<img src="${product.image}" alt="${escapeHtml(product.title)}">` : `<i class="fa-regular fa-image" aria-hidden="true"></i>`;
+        const productImage = (product.images && product.images.length) ? product.images[0] : (product.image || '');
+        const imageHtml = productImage ? `<img src="${productImage}" alt="${escapeHtml(product.title)}">` : `<i class="fa-regular fa-image" aria-hidden="true"></i>`;
         return `<div class="side-panel__item">
           <div class="side-panel__item-img">${imageHtml}</div>
           <div class="side-panel__item-body">
