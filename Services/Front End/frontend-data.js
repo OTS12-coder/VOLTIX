@@ -1,12 +1,15 @@
 /* ==========================================================================
+
    VOLTIX — Frontend Products Data
+
    Add, remove, or edit products here. Do NOT edit the card component.
+
    ========================================================================== */
 
 const FRONTEND_CATEGORIES = [
   { id: 'all', name: 'All' },
   { id: 'components', name: 'Components' },
-  { id: 'pages', name: 'Pages' },
+  { id: 'pages', name: 'Business' },
   { id: 'sections', name: 'Sections' },
   { id: 'landing-pages', name: 'Landing Pages' },
   { id: 'dashboards', name: 'Dashboards' },
@@ -15,270 +18,184 @@ const FRONTEND_CATEGORIES = [
 ];
 
 const FRONTEND_PRODUCTS = [
+
   /* ========== COMPONENTS ========== */
+
   {
-  id: 'order-button-01',
-  category: 'components',
-  title: 'Animated Order Button',
-  description: 'An interactive order button with a smooth delivery van animation, dynamic hover glow, road effect, and animated success popup.',
-  images: [
-    'assets/images/order-btn/2.png',
-    'assets/images/order-btn/3.png',
-    'assets/images/order-btn/1.png'
-  ],
-  video: 'assets/videos/order-btn.mp4'
-},
-  {
-  id: 'footer-01',
-  category: 'components',
-  title: 'Modern Tech Footer',
-  description: 'A dark-themed modern footer featuring brand identity, social links, navigation categories, newsletter subscription form, copyright bar, and payment options.',
-  images: [
-    'assets/images/Footer/1.png'
-  ],
-  video: 'assets/videos/Footer.mp4'
-},
+    id: 'order-button-01',
+    category: 'components',
+    title: 'Animated Order Button',
+    description: 'An interactive order button with a smooth delivery van animation, dynamic hover glow, road effect, and animated success popup.',
+    images: [
+      'assets/images/order-btn/2.png',
+      'assets/images/order-btn/3.png',
+      'assets/images/order-btn/1.png'
+    ],
+    video: 'assets/videos/order-btn.mp4'
+  },
+
   {
     id: 'footer-01',
     category: 'components',
-    title: 'Footer Component',
-    description: 'A clean multi-column footer with social links, newsletter signup, and legal links.',
-    image: ''
+    title: 'Modern Tech Footer',
+    description: 'A dark-themed modern footer featuring brand identity, social links, navigation categories, newsletter subscription form, copyright bar, and payment options.',
+    images: [
+      'assets/images/Footer/1.png'
+    ],
+    video: 'assets/videos/Footer.mp4'
   },
   {
-    id: 'pricing-card-01',
-    category: 'components',
-    title: 'Pricing Card',
-    description: 'A flexible pricing card with feature lists, hover effects, and highlighted popular plan.',
-    image: ''
-  },
+  id: 'animated-hero-01',
+  category: 'components',
+  title: 'Modern Animated Hero',
+  description: 'A modern animated hero section with smooth transitions, immersive visuals, elegant navigation, interactive elements, and a polished call-to-action experience.',
+  images: [
+    'assets/images/BMW/1.png',
+        'assets/images/BMW/2.png'
+  ],
+  video: 'assets/videos/BMW Landing Page.mp4'
+},
+
+
+
+  /* ========== BUSINESS ========== */
+
   {
-    id: 'testimonial-card-01',
-    category: 'components',
-    title: 'Testimonial Card',
-    description: 'A minimal testimonial card with avatar, name, role, and quote with subtle hover lift.',
-    image: ''
-  },
-  {
-    id: 'feature-card-01',
-    category: 'components',
-    title: 'Feature Card',
-    description: 'A grid-ready feature highlight card with icon, title, and description text.',
-    image: ''
-  },
-  {
-    id: 'contact-form-01',
-    category: 'components',
-    title: 'Contact Form',
-    description: 'A validated contact form with floating labels, error states, and submit animation.',
-    image: ''
+    id: 'flexit-01',
+    category: 'pages',
+    title: 'Fitness & Gym Business',
+    description: 'A modern fitness business website for workouts, fitness tracking, progress monitoring, and maintaining a healthy lifestyle.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/flexit.png',
+            video: 'assets/videos/FlexIt.mp4'
+
   },
 
-  /* ========== PAGES ========== */
   {
-    id: 'login-01',
+    id: 'glowskin-01',
     category: 'pages',
-    title: 'Login Page',
-    description: 'A secure login page with social auth options, password visibility toggle, and glass morphism.',
-    image: ''
-  },
-  {
-    id: 'register-01',
-    category: 'pages',
-    title: 'Register Page',
-    description: 'A multi-step registration page with progress indicator, validation, and success states.',
-    image: ''
-  },
-  {
-    id: 'about-01',
-    category: 'pages',
-    title: 'About Page',
-    description: 'A brand story page with team highlights, company values, and timeline section.',
-    image: ''
-  },
-  {
-    id: 'contact-01',
-    category: 'pages',
-    title: 'Contact Page',
-    description: 'A full contact page with form, embedded map, and quick-contact link rows.',
-    image: ''
-  },
-  {
-    id: 'pricing-01',
-    category: 'pages',
-    title: 'Pricing Page',
-    description: 'A comprehensive pricing page with toggle for monthly/annual billing and FAQ section.',
-    image: ''
+    title: 'Beauty & Skincare Business',
+    description: 'A modern skincare business website featuring beauty products, product browsing, and a smooth customer shopping experience.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/glowskin.png',
+                video: 'assets/videos/GlowSkin.mp4'
+
   },
 
-  /* ========== SECTIONS ========== */
   {
-    id: 'hero-section-01',
-    category: 'sections',
-    title: 'Hero Section',
-    description: 'A full-width hero with background animation, gradient text, and dual CTA buttons.',
-    image: ''
+    id: 'craftedgems-01',
+    category: 'pages',
+    title: 'Luxury Jewelry Business',
+    description: 'A luxury jewelry business website designed to showcase premium jewelry collections with elegant visuals, smooth animations, and a refined user experience.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/craftedgems.png',
+                video: 'assets/videos/CraftedGems.mp4'
+
+  },
+
+  {
+    id: 'smartnest-01',
+    category: 'pages',
+    title: 'Smart Home Business',
+    description: 'A modern smart home business website showcasing connected devices, home automation features, and energy consumption monitoring.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/smartnest.png',
+                video: 'assets/videos/SmartNest.mp4'
+
   },
   {
-    id: 'features-section-01',
-    category: 'sections',
-    title: 'Features Section',
-    description: 'A 3-column features grid with icons, titles, descriptions, and hover animations.',
-    image: ''
-  },
-  {
-    id: 'testimonials-section-01',
-    category: 'sections',
-    title: 'Testimonials Section',
-    description: 'A rotating testimonial slider with client photos, names, roles, and quote cards.',
-    image: ''
-  },
-  {
-    id: 'pricing-section-01',
-    category: 'sections',
-    title: 'Pricing Section',
-    description: 'A 3-tier pricing table with highlighted popular plan, toggle switch, and feature checklists.',
-    image: ''
-  },
-  {
-    id: 'faq-section-01',
-    category: 'sections',
-    title: 'FAQ Section',
-    description: 'An accordion FAQ section with smooth expand/collapse animations and search filter.',
-    image: ''
-  },
-  {
-    id: 'team-section-01',
-    category: 'sections',
-    title: 'Team Section',
-    description: 'A team grid with member photos, roles, bios, and social link buttons.',
-    image: ''
-  },
-  {
-    id: 'cta-section-01',
-    category: 'sections',
-    title: 'CTA Section',
-    description: 'A bold call-to-action section with gradient background, headline, and single action button.',
-    image: ''
-  },
+  id: 'luxury-real-estate-01',
+  category: 'pages',
+  title: 'Luxury Real Estate Website',
+  description: 'A luxury real estate website with smooth animations, elegant transitions, immersive property showcases, refined typography, and a premium visual theme.',
+  images: [
+    'assets/images/realstate.png',
+  ],
+  video: 'assets/videos/Lumière.mp4'
+},
+{
+  id: 'cinematic-automotive-01',
+  category: 'pages',
+  title: 'Cinematic Car Showcase',
+  description: 'A cinematic car showcase experience for BMW featuring immersive animations, dramatic transitions, performance storytelling, electric innovation, and interactive model showcases with a premium visual theme.',
+  images: [
+    'assets/images/BMWW/1.png',
+    'assets/images/BMWW/2.png',
+    'assets/images/BMWW/4.png',
+
+  ],
+  video: 'assets/videos/BMW.mp4'
+},
+{
+  id: 'modern-car-dealership-01',
+  category: 'pages',
+  title: 'Modern Car Dealership',
+  description: 'A modern Egyptian car dealership website featuring a premium automotive design, vehicle showcases, smooth animations, detailed car sections, and a polished showroom experience.',
+  images: [
+    'assets/images/El-Ziney/1.png',
+    'assets/images/El-Ziney/2.png',
+  ],
+  video: 'assets/videos/ziney.mp4'
+},
 
   /* ========== LANDING PAGES ========== */
+
   {
-    id: 'saas-landing-01',
+    id: 'brewmaster-01',
     category: 'landing-pages',
-    title: 'SaaS Landing Page',
-    description: 'A complete SaaS landing page with hero, features, pricing table, testimonials, and footer.',
-    image: ''
-  },
-  {
-    id: 'agency-landing-01',
-    category: 'landing-pages',
-    title: 'Agency Landing Page',
-    description: 'A creative agency landing page with portfolio grid, process timeline, and client logos.',
-    image: ''
-  },
-  {
-    id: 'startup-landing-01',
-    category: 'landing-pages',
-    title: 'Startup Landing Page',
-    description: 'A modern startup landing page with problem/solution sections, metrics, and early-access form.',
-    image: ''
-  },
-  {
-    id: 'product-landing-01',
-    category: 'landing-pages',
-    title: 'Product Landing Page',
-    description: 'A single-product landing page with specs, reviews, demo video placeholder, and buy button.',
-    image: ''
-  },
-  {
-    id: 'business-landing-01',
-    category: 'landing-pages',
-    title: 'Business Landing Page',
-    description: 'A corporate business landing page with services grid, case studies, and contact form.',
-    image: ''
+    title: 'Coffee Shop Website',
+    description: 'A modern coffee shop website featuring an interactive menu and an online ordering experience designed for a smooth customer journey.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/coffee.png',
+                video: 'assets/videos/BrewMaster.mp4'
+
   },
 
-  /* ========== DASHBOARDS ========== */
   {
-    id: 'admin-dashboard-01',
-    category: 'dashboards',
-    title: 'Admin Dashboard',
-    description: 'A dark-themed admin dashboard with sidebar navigation, stats cards, and data table.',
-    image: ''
+    id: 'proteinfuel-01',
+    category: 'landing-pages',
+    title: 'Sports Nutrition Website',
+    description: 'A modern sports nutrition website offering fitness supplements, nutritional products, and useful fitness-related content.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/proteinfue;.png',
+                video: 'assets/videos/PROTEINFUEL.mp4'
+
   },
-  {
-    id: 'analytics-dashboard-01',
-    category: 'dashboards',
-    title: 'Analytics Dashboard',
-    description: 'A data-rich analytics dashboard with charts, date range filters, and export options.',
-    image: ''
-  },
-  {
-    id: 'crm-dashboard-01',
-    category: 'dashboards',
-    title: 'CRM Dashboard',
-    description: 'A customer relationship management dashboard with pipeline view, contacts, and deals.',
-    image: ''
-  },
-  {
-    id: 'finance-dashboard-01',
-    category: 'dashboards',
-    title: 'Finance Dashboard',
-    description: 'A financial overview dashboard with revenue charts, transactions list, and budget tracker.',
-    image: ''
-  },
+
 
   /* ========== E-COMMERCE ========== */
+
   {
-    id: 'product-page-01',
+    id: 'laptophub-01',
     category: 'e-commerce',
-    title: 'Product Page',
-    description: 'A detailed product page with image gallery, variant selectors, and add-to-cart flow.',
-    image: ''
-  },
-  {
-    id: 'product-listing-01',
-    category: 'e-commerce',
-    title: 'Product Listing',
-    description: 'A filterable product grid with sidebar filters, sort dropdown, and quick-view modal.',
-    image: ''
-  },
-  {
-    id: 'shopping-cart-01',
-    category: 'e-commerce',
-    title: 'Shopping Cart',
-    description: 'A slide-out cart with quantity controls, promo code input, and smooth item removal.',
-    image: ''
-  },
-  {
-    id: 'checkout-page-01',
-    category: 'e-commerce',
-    title: 'Checkout Page',
-    description: 'A multi-step checkout page with shipping form, payment summary, and order confirmation.',
-    image: ''
+    title: 'Technology Store Website',
+    description: 'A modern laptop marketplace where users can browse, filter, and compare different laptop products with a clean and responsive shopping experience.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/laptophub.png',
+                video: 'assets/videos/LaptopHub.mp4'
+
   },
 
-  /* ========== OTHER ========== */
   {
-    id: 'coming-soon-01',
-    category: 'other',
-    title: 'Coming Soon Page',
-    description: 'A stylish coming soon page with countdown timer, email capture, and social links.',
-    image: ''
+    id: 'hoodies-brand-01',
+    category: 'e-commerce',
+    title: 'Fashion & Hoodies Website',
+    description: 'A modern fashion e-commerce website specializing in hoodies, allowing users to explore products and choose different sizes and colors.',
+    image: 'assets/images/NEVV.png',
+                video: 'assets/videos/NEVV.mp4'
+
+  },
+
+  {
+    id: 'soundpulse-01',
+    category: 'e-commerce',
+    title: 'Audio Equipment Website',
+    description: 'A modern audio equipment store featuring headphones, speakers, and other audio products with detailed product specifications.',
+    image: 'https://portfolio-alpha-sevennn.vercel.app/Assets/Images/SoundPulse.png',
+                video: 'assets/videos/SoundPulse.mp4'
+
   },
   {
-    id: '404-page-01',
-    category: 'other',
-    title: '404 Error Page',
-    description: 'A branded 404 page with search bar, suggested links, and playful illustration area.',
-    image: ''
-  },
-  {
-    id: 'maintenance-01',
-    category: 'other',
-    title: 'Maintenance Mode Page',
-    description: 'A minimal maintenance page with progress indicator, estimated time, and contact email.',
-    image: ''
-  }
+  id: 'boreal-01',
+  category: 'travel',
+  title: 'Mountain Travel & Adventure Website',
+  description: 'A luxury travel website focused on mountain adventures, premium trips, destinations, and unforgettable outdoor experiences with elegant visuals, smooth animations, and a responsive design.',
+  image: 'assets/images/Boreal.png',
+              video: 'assets/videos/Boreal.mp4'
+
+},
+
 ];
