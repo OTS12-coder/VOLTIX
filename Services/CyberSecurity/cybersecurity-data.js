@@ -29,7 +29,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Security Assessment',
     description:
       'A structured review of your security posture to identify weaknesses, security gaps, and areas that require improvement.',
-    image: '',
+    image: 'assets/01_security_assessment.png',
     tags: ['Assessment', 'Security', 'Risk']
   },
 
@@ -39,7 +39,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Security Configuration Review',
     description:
       'Review security configurations across systems and infrastructure to identify misconfigurations and improve overall protection.',
-    image: '',
+    image: 'assets/02_security_configuration_review.png',
     tags: ['Configuration', 'Review', 'Security']
   },
 
@@ -54,7 +54,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Vulnerability Assessment',
     description:
       'Identify and prioritize vulnerabilities across systems, applications, and infrastructure with actionable remediation recommendations.',
-    image: '',
+    image: 'assets/03_vulnerability_assessment.png',
     tags: ['Vulnerability', 'Scanning', 'Risk']
   },
 
@@ -69,7 +69,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Network Security Assessment',
     description:
       'Assess network architecture, configurations, access controls, and exposed services to identify weaknesses and improve network security.',
-    image: '',
+    image: 'assets/04_network_security_assessment.png',
     tags: ['Network', 'Firewall', 'Assessment']
   },
 
@@ -79,7 +79,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Network Security Setup',
     description:
       'Configure essential network security controls including firewall rules, secure access policies, segmentation, and network protection.',
-    image: '',
+    image: 'assets/05_network_security_setup.png',
     tags: ['Firewall', 'Network', 'Configuration']
   },
 
@@ -94,7 +94,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Security Hardening',
     description:
       'Strengthen systems and infrastructure by reducing attack surfaces, applying secure configurations, and improving access controls.',
-    image: '',
+    image: 'assets/06_security_hardening.png',
     tags: ['Hardening', 'Configuration', 'Security']
   },
 
@@ -109,7 +109,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Security Monitoring',
     description:
       'Monitor systems and network activity for suspicious behavior, security events, and potential threats with continuous visibility and alerting.',
-    image: '',
+    image: 'assets/07_security_monitoring.png',
     tags: ['Monitoring', 'SIEM', 'Alerts']
   },
 
@@ -124,7 +124,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Basic Incident Investigation',
     description:
       'Investigate basic security incidents by reviewing logs, identifying suspicious activity, assessing potential impact, and documenting findings.',
-    image: '',
+    image: 'assets/08_basic_incident_investigation.png',
     tags: ['Incident Response', 'Investigation', 'Logs']
   },
 
@@ -139,7 +139,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Endpoint Security Setup',
     description:
       'Configure essential endpoint protection controls to improve device security, reduce attack surfaces, and protect systems against common threats.',
-    image: '',
+    image: 'assets/09_endpoint_security_setup.png',
     tags: ['Endpoint', 'Protection', 'Security']
   },
 
@@ -154,7 +154,7 @@ const CYBERSECURITY_PRODUCTS = [
     title: 'Web Security Assessment',
     description:
       'Review web applications for common security weaknesses, exposed attack surfaces, authentication issues, and configuration risks.',
-    image: '',
+    image: 'assets/10_web_security_assessment.png',
     tags: ['Web', 'OWASP', 'Assessment']
   }
 
