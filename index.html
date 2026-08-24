@@ -87,12 +87,12 @@
     </a>
 
     <nav class="navbar__links" id="navLinks" aria-label="Primary">
+      <a href="#internship">Internship</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
       <a href="#team">Team</a>
       <a href="#testimonials">Testimonials</a>
-      <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -163,6 +163,90 @@
     <br>
     <span style="margin-top: 5px;">Scroll</span>
     <div class="hero__scroll-track"><div class="hero__scroll-thumb"></div></div>
+  </div>
+</section>
+
+<!-- ===================== INTERNSHIP ===================== -->
+<section class="section internship" id="internship">
+  <div class="container">
+    <div class="section__head reveal" data-reveal>
+      <p class="eyebrow"><span class="eyebrow__dot"></span> VOLTIX Internship Program</p>
+      <h2 class="section__title">VOLTIX Internship Program 2026</h2>
+      <p class="section__sub">
+        Join the VOLTIX Internship Program and gain practical experience, develop real-world skills,
+        and take your first step toward building your professional career. The program is designed
+        for motivated university students who want to learn, build, and grow in a professional environment.
+      </p>
+    </div>
+
+    <div class="internship__grid">
+      <div class="internship__left">
+        <div class="internship-details reveal" data-reveal>
+          <div class="internship-detail">
+            <span class="internship-detail__label">Duration</span>
+            <span class="internship-detail__value">1 Month</span>
+          </div>
+          <div class="internship-detail">
+            <span class="internship-detail__label">Eligibility</span>
+            <span class="internship-detail__value">University students aged 18+</span>
+          </div>
+          <div class="internship-detail">
+            <span class="internship-detail__label">Application Deadline</span>
+            <span class="internship-detail__value">September 1, 2026</span>
+          </div>
+          <div class="internship-detail">
+            <span class="internship-detail__label">International Students</span>
+            <span class="internship-detail__value">Welcome 🌍</span>
+          </div>
+          <div class="internship-detail">
+            <span class="internship-detail__label">Internship</span>
+            <span class="internship-detail__value">100% Free</span>
+          </div>
+        </div>
+
+        <div class="internship-notice reveal" data-reveal style="--d:1">
+          <p><strong>The VOLTIX Internship is completely free of charge</strong> — from the application process and training to the completion of the internship and receiving your certificate. There are no fees at any stage.</p>
+          <p><strong>Applications are accepted on a First Come, First Served basis.</strong></p>
+        </div>
+
+        <div class="reveal" data-reveal style="--d:2">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd90RbLW1NHdpVaI-oVgbxtOnt8DGLB_GcutcrmBoQVwP2n3Q/viewform?usp=publish-editor"
+             class="btn btn--primary btn--lg ripple internship-apply-btn"
+             target="_blank"
+             rel="noopener noreferrer">
+            <span>Apply Now</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8H15M15 8L9 2M15 8L9 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="internship__right">
+        <p class="internship-tracks__title reveal" data-reveal>Available Tracks</p>
+        <div class="internship-tracks">
+          <div class="internship-card reveal" data-reveal style="--d:1">
+            <div class="internship-card__icon">
+              <i class="fa-solid fa-code" aria-hidden="true"></i>
+            </div>
+            <h3>Front-End Development</h3>
+            <p>Build responsive, interactive web interfaces using modern frameworks and industry best practices.</p>
+          </div>
+          <div class="internship-card reveal" data-reveal style="--d:2">
+            <div class="internship-card__icon">
+              <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+            </div>
+            <h3>Data Analysis</h3>
+            <p>Transform raw data into actionable insights through visualization, statistical analysis, and reporting.</p>
+          </div>
+          <div class="internship-card reveal" data-reveal style="--d:3">
+            <div class="internship-card__icon">
+              <i class="fa-solid fa-pen-ruler" aria-hidden="true"></i>
+            </div>
+            <h3>UI/UX Design</h3>
+            <p>Create intuitive, user-centered digital experiences through research, wireframing, and prototyping.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -316,7 +400,9 @@
 
         <a
           href="Services/UI-UX/ui-ux.html"
+          class="ui-ux-disabled"
           style="color:inherit;text-decoration:none;"
+          aria-disabled="true"
         > 
           <h3>UI / UX Design</h3> 
 
@@ -333,8 +419,9 @@
         </ul> 
 
         <a
-          class="btn btn--light service-card__explore-btn"
+          class="btn btn--light service-card__explore-btn ui-ux-disabled"
           href="Services/UI-UX/ui-ux.html"
+          aria-disabled="true"
         >
           Explore Service
         </a>
@@ -1340,7 +1427,7 @@
     <div class="footer__col">
       <h4>Services</h4>
       <a href="Services/data-analytics/data-analysis.html">Data Analytics</a>
-        <a href="Services/UI-UX/ui-ux.html">UI/UX Design</a>
+        <a href="Services/UI-UX/ui-ux.html" class="ui-ux-disabled" aria-disabled="true">UI/UX Design</a>
       <a href="Services/CyberSecurity/cybersecurity.html">Cybersecurity</a>
       <a href="Services/Front%20End/frontend.html">Frontend Development</a>
       <a href="Services/Backend/dot-net.html">Backend .NET</a>

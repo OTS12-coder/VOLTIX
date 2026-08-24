@@ -30,13 +30,15 @@ function showToast(message) {
   if (!toast) {
     toast = document.createElement('div');
     toast.id = 'voltixToast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
     toast.style.cssText = `
       position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
       padding: 14px 24px; border-radius: 12px; background: var(--bg-surface);
       border: 1px solid var(--border-glass-strong); color: var(--white);
       font-family: var(--font-mono); font-size: 0.85rem; z-index: 500;
       opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.45); white-space: nowrap;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.45); max-width: 90vw; white-space: normal; text-align: center;
     `;
     document.body.appendChild(toast);
   }
@@ -47,7 +49,7 @@ function showToast(message) {
   toast._timer = setTimeout(() => {
     toast.style.opacity = '0';
     toast.style.transform = 'translateX(-50%) translateY(20px)';
-  }, 2800);
+  }, 3200);
 }
 
 /* ==========================================================================
@@ -155,6 +157,24 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.remove('mobile-open');
       burgerBtn.classList.remove('is-open');
       burgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ------------------------------------------------------------------ */
+  /* UI/UX Disabled Navigation — show toast instead of navigating      */
+  /* ------------------------------------------------------------------ */
+  document.querySelectorAll('.ui-ux-disabled').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      showToast('UI/UX projects are coming soon! 🚀');
+      setTimeout(() => showToast('We don\'t have any UI/UX projects available at the moment, but exciting projects will be added soon. Stay tuned!'), 900);
+    });
+    link.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showToast('UI/UX projects are coming soon! 🚀');
+        setTimeout(() => showToast('We don\'t have any UI/UX projects available at the moment, but exciting projects will be added soon. Stay tuned!'), 900);
+      }
     });
   });
 
