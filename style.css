@@ -2205,6 +2205,81 @@ a.contact__quick-row:hover { color: var(--accent-cyan); }
   line-height: 1.55;
 }
 
+/* ============================================================
+   INTERNSHIP TRACK LOGOS
+   ============================================================ */
+.internship-card__icon.service-logo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+.internship-card__icon.service-logo img {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  max-width: 30px !important;
+  max-height: 30px !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+.internship-card__icon.service-logo img[alt="Full Stack"] {
+  width: 31px !important;
+  height: 31px !important;
+}
+.internship-card__icon.service-logo img[alt="Data Analysis"] {
+  width: 30px !important;
+  height: 30px !important;
+}
+.internship-card__icon.service-logo img[alt="UI/UX Design"] {
+  width: 31px !important;
+  height: 31px !important;
+}
+.internship-card:hover .internship-card__icon.service-logo img {
+  transform: scale(1.08) !important;
+  transition: transform 0.3s ease !important;
+}
+
+@media (max-width: 768px) {
+  .internship-card__icon.service-logo img {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+    max-width: 28px !important;
+    max-height: 28px !important;
+  }
+  .internship-card__icon.service-logo img[alt="Full Stack"] {
+    width: 29px !important;
+    height: 29px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .internship-card__icon.service-logo img {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    min-height: 26px !important;
+    max-width: 26px !important;
+    max-height: 26px !important;
+  }
+  .internship-card__icon.service-logo img[alt="Full Stack"] {
+    width: 27px !important;
+    height: 27px !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .internship__grid {
     grid-template-columns: 1fr;
