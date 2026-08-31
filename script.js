@@ -82,28 +82,6 @@ async function sendEmail(kind, data) {
   return res.json();
 }
 
-async function sendEmailWithFiles(kind, data, files) {
-  const form = new FormData();
-  form.append('kind', kind);
-  for (const [key, value] of Object.entries(data)) {
-    if (key === 'fileNames') continue;
-    form.append(key, value);
-  }
-  for (const file of files) {
-    form.append('files', file);
-  }
-  const res = await fetch(SEND_EMAIL_ENDPOINT, {
-    method: 'POST',
-    body: form
-  });
-  if (!res.ok) {
-    let msg = 'Failed to send email';
-    try { msg = (await res.json()).error || msg; } catch (_) {}
-    throw new Error(msg);
-  }
-  return res.json();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ------------------------------------------------------------------ */
@@ -476,9 +454,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeSuccessBtn = document.getElementById('closeSuccess');
   const serviceChips = document.getElementById('serviceChips');
   const serviceError = document.getElementById('serviceError');
-  const fileDrop = document.getElementById('fileDrop');
-  const fileInput = document.getElementById('files');
-  const fileDropText = document.getElementById('fileDropText');
 
   function validateField(field) {
     const wrapper = field.closest('.field');
@@ -519,7 +494,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fd = new FormData(form);
     const servicesList = fd.getAll('service').join(', ');
-    const files = fileInput.files ? Array.from(fileInput.files) : [];
     const data = {
       fullName: fd.get('fullName'),
       companyName: fd.get('companyName'),
@@ -533,7 +507,6 @@ document.addEventListener('DOMContentLoaded', () => {
       deadline: fd.get('deadline') || 'Not specified',
       contactMethod: fd.get('contactMethod'),
       notes: fd.get('notes'),
-      fileNames: files.map(f => f.name),
       submitted_at: new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
     };
 
@@ -542,11 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalErrorMsg) modalErrorMsg.textContent = '';
 
     try {
-      if (files.length > 0) {
-        await sendEmailWithFiles('request', data, files);
-      } else {
-        await sendEmail('request', data);
-      }
+      await sendEmail('request', data);
 
       closeModal();
       openThankYouPopup();
@@ -573,28 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ------------------------------------------------------------------ */
-  /* 13. File drop UI                                                    */
-  /* ------------------------------------------------------------------ */
-  ['dragenter', 'dragover'].forEach(evt => {
-    fileDrop.addEventListener(evt, (e) => { e.preventDefault(); fileDrop.classList.add('is-dragover'); });
-  });
-  ['dragleave', 'drop'].forEach(evt => {
-    fileDrop.addEventListener(evt, (e) => { e.preventDefault(); fileDrop.classList.remove('is-dragover'); });
-  });
-  fileDrop.addEventListener('drop', (e) => {
-    if (e.dataTransfer.files.length) {
-      fileInput.files = e.dataTransfer.files;
-      updateFileText();
-    }
-  });
-  fileInput.addEventListener('change', updateFileText);
-  function updateFileText() {
-    const count = fileInput.files.length;
-    fileDropText.textContent = count ? `${count} file${count > 1 ? 's' : ''} selected` : 'Drag files here or click to browse';
-  }
-
-  /* ------------------------------------------------------------------ */
-  /* 14. Newsletter form (footer)                                        */
+  /* 13. Newsletter form (footer)                                        */
   /* ------------------------------------------------------------------ */
   const newsletterForm = document.getElementById('newsletterForm');
   const newsletterMsg = document.getElementById('newsletterMsg');
