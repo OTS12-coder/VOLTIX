@@ -476,6 +476,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeSuccessBtn = document.getElementById('closeSuccess');
   const serviceChips = document.getElementById('serviceChips');
   const serviceError = document.getElementById('serviceError');
+  const fileDrop = document.getElementById('fileDrop');
+  const fileInput = document.getElementById('files');
+  const fileDropText = document.getElementById('fileDropText');
 
   function validateField(field) {
     const wrapper = field.closest('.field');
@@ -572,10 +575,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ------------------------------------------------------------------ */
   /* 13. File drop UI                                                    */
   /* ------------------------------------------------------------------ */
-  const fileDrop = document.getElementById('fileDrop');
-  const fileInput = document.getElementById('files');
-  const fileDropText = document.getElementById('fileDropText');
-
   ['dragenter', 'dragover'].forEach(evt => {
     fileDrop.addEventListener(evt, (e) => { e.preventDefault(); fileDrop.classList.add('is-dragover'); });
   });
