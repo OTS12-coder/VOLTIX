@@ -37,8 +37,42 @@
    ========================================================================== */
 
 const nodemailer = require('nodemailer');
+const Busboy = require('busboy');
 
 const COMPANY_EMAIL = 'voltixeg6@gmail.com';
+
+function parseMultipart(req) {
+  return new Promise((resolve, reject) => {
+    const busboy = new Busboy({ headers: req.headers });
+    const fields = {};
+    const attachments = [];
+    let fileIndex = 0;
+
+    busboy.on('field', (name, value) => {
+      fields[name] = value;
+    });
+
+    busboy.on('file', (name, stream, filename, encoding, mimeType) => {
+      fileIndex++;
+      const chunks = [];
+      stream.on('data', chunk => chunks.push(chunk));
+      stream.on('end', () => {
+        attachments.push({
+          filename: filename || `attachment_${fileIndex}`,
+          content: Buffer.concat(chunks),
+          contentType: mimeType || 'application/octet-stream'
+        });
+      });
+    });
+
+    busboy.on('finish', () => {
+      resolve({ fields, attachments });
+    });
+
+    busboy.on('error', reject);
+    req.pipe(busboy);
+  });
+}
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -56,14 +90,28 @@ module.exports = async function handler(req, res) {
   }
 
   let body = req.body;
-  if (typeof body === 'string') {
-    try { body = JSON.parse(body); } catch (_) { body = {}; }
+  let attachments = [];
+
+  if (req.headers['content-type']?.startsWith('multipart/form-data')) {
+    const parsed = await parseMultipart(req);
+    const { kind, ...rest } = parsed.fields;
+    body = { kind, data: rest };
+    attachments = parsed.attachments;
+  } else {
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch (_) { body = {}; }
+    }
   }
+
   const { kind, data } = body || {};
 
   if (!data || (kind !== 'request' && kind !== 'contact' && kind !== 'order' && kind !== 'newsletter')) {
     res.status(400).json({ error: 'Invalid request.' });
     return;
+  }
+
+  if (attachments.length > 0 && !data.fileNames) {
+    data.fileNames = attachments.map(a => a.filename);
   }
 
   try {
@@ -82,13 +130,23 @@ module.exports = async function handler(req, res) {
           : `New Contact Message — ${data.subject || ''}`;
     const html = kind === 'request' ? buildRequestEmailHtml(data) : kind === 'order' ? buildOrderEmailHtml(data) : kind === 'newsletter' ? buildNewsletterEmailHtml(data) : buildContactEmailHtml(data);
 
-    await transporter.sendMail({
+    const mailOptions = {
       from: `"VOLTIX Website" <${GMAIL_USER}>`,
       to: COMPANY_EMAIL,
       replyTo,
       subject,
       html
-    });
+    };
+
+    if (attachments.length > 0) {
+      mailOptions.attachments = attachments.map(a => ({
+        filename: a.filename,
+        content: a.content,
+        contentType: a.contentType
+      }));
+    }
+
+    await transporter.sendMail(mailOptions);
 
     res.status(200).json({ ok: true });
   } catch (err) {

@@ -82,6 +82,28 @@ async function sendEmail(kind, data) {
   return res.json();
 }
 
+async function sendEmailWithFiles(kind, data, files) {
+  const form = new FormData();
+  form.append('kind', kind);
+  for (const [key, value] of Object.entries(data)) {
+    if (key === 'fileNames') continue;
+    form.append(key, value);
+  }
+  for (const file of files) {
+    form.append('files', file);
+  }
+  const res = await fetch(SEND_EMAIL_ENDPOINT, {
+    method: 'POST',
+    body: form
+  });
+  if (!res.ok) {
+    let msg = 'Failed to send email';
+    try { msg = (await res.json()).error || msg; } catch (_) {}
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ------------------------------------------------------------------ */
@@ -494,6 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fd = new FormData(form);
     const servicesList = fd.getAll('service').join(', ');
+    const files = fileInput.files ? Array.from(fileInput.files) : [];
     const data = {
       fullName: fd.get('fullName'),
       companyName: fd.get('companyName'),
@@ -507,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
       deadline: fd.get('deadline') || 'Not specified',
       contactMethod: fd.get('contactMethod'),
       notes: fd.get('notes'),
-      fileNames: fileInput.files ? Array.from(fileInput.files).map(f => f.name) : [],
+      fileNames: files.map(f => f.name),
       submitted_at: new Date().toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
     };
 
@@ -516,7 +539,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalErrorMsg) modalErrorMsg.textContent = '';
 
     try {
-      await sendEmail('request', data);
+      if (files.length > 0) {
+        await sendEmailWithFiles('request', data, files);
+      } else {
+        await sendEmail('request', data);
+      }
 
       closeModal();
       openThankYouPopup();
